@@ -1,0 +1,38 @@
+gantt
+  dateFormat YYYY-MM-DD
+  axisFormat %d-%b
+  tickInterval 1week
+  weekday monday
+
+  section Requisitos
+    World Café                            :done,    rWorldCafe,     2023-09-11, 2w
+    Especificación de Requisitos          :done,    rRequisites,    2023-09-18, 1w
+  
+  section Backend
+    Diseño Modelo de Datos Inicial        :done,    bDBDesign,      2023-09-18, 1w 
+    Diseño API Inicial                    :active,  bAPIDesign,     2023-09-25, 1w
+    Implementación API básica             :active,  bAPIImpl,       2023-09-25, 4w
+    Implementación sistema usuarios       :         bUserSystem,    2023-10-09, 2w
+    Implementación módulo SMTP            :         bSMTP,          2023-10-23, 2w
+    Implementación módulo PDF             :         bPDF,           2023-11-06, 2w
+
+
+  section Frontend
+    Diseño prototipo usabilidad           :active,  fLowResProt,    2023-09-25, 2w
+    Pruebas prototipo usabilidad          :         fLowResTest,    2023-10-09, 1w
+    Implementación frontpage              :         fFrontpage,     2023-10-16, 2w
+    Implementación dashboard              :         fDashboard,     2023-10-30, 2w
+    Implementación activity manager       :         fActManager,    2023-11-13, 2w
+    Implementación member manager         :         fMemberManager, 2023-11-27, 1w
+    Implementación newsletter             :         fNewsletter,    2023-12-04, 1w
+
+
+  section Validación
+    Validación inicial                    :         vInicial,       2023-11-20, 1w
+    Validación final                      :         vFinal,         2023-12-11, 1w
+
+  section Documentación
+    Finalizar Documentación               :         dDocs,          2023-11-27, 3w
+    Charla ACM                            :         dCharla,        2023-12-04, 1w
+
+    

@@ -1,0 +1,5 @@
+alias mmd := mermaid
+default_format := "svg"
+
+mermaid file format=default_format:
+  mmdc -i src/{{file}}.mmd -o out/{{file}}.{{format}} -c config.json -C style.css

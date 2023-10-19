@@ -1,0 +1,11 @@
+.grid .tick {
+  stroke: #dddddd !important;
+}
+
+.task {
+  stroke-width: 1 !important;
+}
+
+.taskTextOutsideRight, .taskTextOutsideLeft {
+  background: #ffffff !important;  
+}

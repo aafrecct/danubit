@@ -1,0 +1,79 @@
+erDiagram
+  
+  USER ||--|{ MEMBER  : is
+  USER ||--|| LENT    : has
+  USER {
+    uuid      uuid          PK
+    string    nombre        
+    string    apellido
+    string    correoAlumno  UK
+    password  password
+  }
+
+  ASOCIATION }|--|{ MEMBER    : has
+  ASOCIATION ||--|{ DOCUMENT  : keeps
+  ASOCIATION }|--o{ ACTIVITY  : organizes
+  ASOCIATION ||--|{ MATERIAL  : owns
+  ASOCIATION ||--|| MEDIA     : logo
+  ASOCIATION {
+    uuid    uuid      PK
+    string  name
+    string  desc
+    json    info
+  }
+  
+  MEMBER {
+    bool isAccepted
+    bool isBoardMember
+  }
+  
+  ACTIVITY ||--o{ MEDIA       : uses  
+  ACTIVITY ||--o{ DOCUMENT    : links
+  ACTIVITY {
+    string  id                PK
+    string  name
+    string  desc
+    string  room
+    date    initialDate
+    bool    isMultiSession        "Other dates in `additionalInfo`"
+    bool    isCreditable
+    bool    isExternal
+    bool    isRoomAccepted
+    bool    isMediaAccepted
+    bool    isActivityAccepted
+    bool    isRegistrationNeeded
+    enum    access                "public | members | board"
+    json    additionalInfo
+  }
+  
+  DOCUMENT {
+    string  id                PK
+    string  name
+    string  path
+    date    creationDate
+    bool    isCurrent
+    bool    isImportant
+    bool    isSchoolAccessible
+    bool    isPublicAccessible
+  }
+
+  MATERIAL ||--|| LENT : is
+  MATERIAL {
+    string  id
+    string  name
+    string  desc
+    int     quantity
+    bool    isLendable
+  }
+
+  LENT {
+    date    dueDate
+    int     quantity
+  }
+
+  MEDIA {
+    string  id
+    string  name
+    string  kind
+    string  path
+  }

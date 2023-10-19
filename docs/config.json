@@ -1,0 +1,8 @@
+{
+  "theme": "neutral",
+  "fontFamily": "'CMU Serif', serif",
+  "fontWeight": "Medium",
+  "gantt": {
+    "leftPadding": 200
+  }
+}
