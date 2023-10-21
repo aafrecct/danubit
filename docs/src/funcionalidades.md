@@ -1,4 +1,6 @@
-# Comunicación con la facultad
+# Posibles funcionalidades de la plataforma
+
+## Comunicación con la facultad
 
 - Reserva de espaciós
 - Aprobación de actividades
@@ -10,18 +12,16 @@
 - Pedir material
 - Chat con Subdirección
 
-# Publicidad
+## Publicidad
 
 - Newsletter
 - Web de eventos
 - Frontpage de asociaciones
 
-# Managing interno
+## Managing interno
 
 - Manejo de juntas
 - Manejo de miembros
 - Manejo de actividades
 - Log de reuniones
 - Avisos y notificaciones
-
-

@@ -1,22 +1,22 @@
 erDiagram
   
-  USER ||--|{ MEMBER  : is
-  USER ||--|| LENT    : has
+  USER ||--|{ MEMBER              : is
+  USER ||--|| LENT                : has
   USER {
-    uuid      uuid          PK
+    uuid      uuid                PK
     string    nombre        
     string    apellido
-    string    correoAlumno  UK
+    string    correoAlumno        UK
     password  password
   }
 
-  ASOCIATION }|--|{ MEMBER    : has
-  ASOCIATION ||--|{ DOCUMENT  : keeps
-  ASOCIATION }|--o{ ACTIVITY  : organizes
-  ASOCIATION ||--|{ MATERIAL  : owns
-  ASOCIATION ||--|| MEDIA     : logo
+  ASOCIATION }|--|{ MEMBER        : has
+  ASOCIATION ||--|{ DOCUMENT      : keeps
+  ASOCIATION }|--o{ ACTIVITY      : organizes
+  ASOCIATION ||--|{ MATERIAL      : owns
+  ASOCIATION ||--|| MEDIA         : logo
   ASOCIATION {
-    uuid    uuid      PK
+    uuid    uuid                  PK
     string  name
     string  desc
     json    info
@@ -27,10 +27,10 @@ erDiagram
     bool isBoardMember
   }
   
-  ACTIVITY ||--o{ MEDIA       : uses  
-  ACTIVITY ||--o{ DOCUMENT    : links
+  ACTIVITY ||--o{ MEDIA           : uses  
+  ACTIVITY ||--o{ DOCUMENT        : links
   ACTIVITY {
-    string  id                PK
+    string  id                    PK
     string  name
     string  desc
     string  room
@@ -47,7 +47,7 @@ erDiagram
   }
   
   DOCUMENT {
-    string  id                PK
+    string  id                    PK
     string  name
     string  path
     date    creationDate
@@ -59,7 +59,7 @@ erDiagram
 
   MATERIAL ||--|| LENT : is
   MATERIAL {
-    string  id
+    string  id                    PK
     string  name
     string  desc
     int     quantity
@@ -72,7 +72,7 @@ erDiagram
   }
 
   MEDIA {
-    string  id
+    string  id                    PK
     string  name
     string  kind
     string  path
