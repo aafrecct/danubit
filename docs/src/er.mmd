@@ -1,30 +1,36 @@
 erDiagram
   
   USER ||--|{ MEMBER              : is
+  USER ||--|| MANAGER             : is
   USER ||--|| LENT                : has
   USER {
     uuid      uuid                PK
-    string    nombre        
-    string    apellido
-    string    correoAlumno        UK
-    password  password
+    string    username            UK
+    string    name        
+    string    surname
+    string    email               UK
+    password  password_hash
   }
 
   ASOCIATION }|--|{ MEMBER        : has
+  ASOCIATION }|--|| MANAGER       : has
   ASOCIATION ||--|{ DOCUMENT      : keeps
   ASOCIATION }|--o{ ACTIVITY      : organizes
   ASOCIATION ||--|{ MATERIAL      : owns
   ASOCIATION ||--|| MEDIA         : logo
   ASOCIATION {
     uuid    uuid                  PK
-    string  name
-    string  desc
+    string  short_name
+    string  long_name
+    string  description
     json    info
   }
   
   MEMBER {
     bool isAccepted
-    bool isBoardMember
+    date acceptedDate
+    date leavingDate
+    enum isBoardMember            "false | board | vicechair | chair"
   }
   
   ACTIVITY ||--o{ MEDIA           : uses  
@@ -53,7 +59,7 @@ erDiagram
     date    creationDate
     bool    isCurrent
     bool    isImportant
-    bool    isSchoolAccessible
+    bool    isManagerAccessible
     bool    isPublicAccessible
   }
 
@@ -76,4 +82,13 @@ erDiagram
     string  name
     string  kind
     string  path
+  }
+
+  MANAGER {
+    string  name                  PK
+    email   contactEmail
+    email   adminEmail
+    email   materialEmail
+    email   printEmail
+    email   commEmail
   }

@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  danubit-db:
+    image: postgres
+    # restart: always
+    environment:
+      POSTGRES_USER: danubit
+      POSTGRES_PASSWORD: danubit
+      POSTGRES_DB: danubit
+    ports:
+      - 5432:5432

@@ -1,0 +1,1248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="design_system.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     showgrid="true"
+     inkscape:zoom="0.5"
+     inkscape:cx="230"
+     inkscape:cy="-28"
+     inkscape:window-width="1366"
+     inkscape:window-height="768"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="430.00001,297"
+       orientation="1,0"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="209.99999,297.00001"
+       orientation="-1,0"
+       id="guide3"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="-152.23059,297.00001"
+       orientation="0,-1"
+       id="guide4"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-115.73937,8.2282764e-06"
+       orientation="0,-1"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="63.737864,297.00001"
+       orientation="0,-1"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="54.801244,8.2282764e-06"
+       orientation="0,-1"
+       id="guide7"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,297"
+       orientation="-1,0"
+       id="guide8"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="209.99999,297.00001"
+       orientation="1,0"
+       id="guide9"
+       inkscape:locked="false" />
+    <inkscape:page
+       x="0"
+       y="0"
+       width="210"
+       height="297"
+       id="page9"
+       margin="150mm"
+       bleed="0" />
+    <sodipodi:guide
+       position="235.00001,258.27463"
+       orientation="-1,0"
+       id="guide10"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="15,297"
+       orientation="-1,0"
+       id="guide11"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="195,297.00001"
+       orientation="-1,0"
+       id="guide12"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="63.737864,282"
+       orientation="0,1"
+       id="guide13"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="54.801244,16"
+       orientation="0,1"
+       id="guide14"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="220.00001,258.27463"
+       orientation="-1,0"
+       id="guide15"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="415.00001,297"
+       orientation="-1,0"
+       id="guide16"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <inkscape:grid
+       id="grid38"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="3"
+       spacingy="3"
+       empcolor="#696969"
+       empopacity="0.30196078"
+       color="#737373"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect110"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect99"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect97"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect95"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect93"
+       is_visible="true"
+       lpeversion="1" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter49"
+       x="-0.0074319614"
+       y="-0.016347654"
+       width="1.0148639"
+       height="1.0326953">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.10217284"
+         id="feGaussianBlur49" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter49-7"
+       x="-0.0028192562"
+       y="-0.016347654"
+       width="1.0056385"
+       height="1.0326953">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.10217284"
+         id="feGaussianBlur49-5" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter92"
+       x="-0.0027920875"
+       y="-0.016190114"
+       width="1.0055842"
+       height="1.0323802">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.10118821"
+         id="feGaussianBlur92" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-220.00001)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill;stroke:none"
+       id="rect2"
+       width="210"
+       height="297"
+       x="220.00002"
+       y="0"
+       rx="0"
+       ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-weight:300;font-size:11.2889px;line-height:1;font-family:Lexend;-inkscape-font-specification:'Lexend Light';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="235.00002"
+       y="23.995842"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:11.2889px;font-family:'Jost*';-inkscape-font-specification:'Jost* Semi-Bold';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="235.00002"
+         y="23.995842">Danubit Design System</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:300;font-size:5.64444px;line-height:1;font-family:Lexend;-inkscape-font-specification:'Lexend Light';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="235.40642"
+       y="29.606201"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Jost*';-inkscape-font-specification:'Jost*';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="235.40642"
+         y="29.606201">Borja Martinena Cepa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="241.00002"
+       y="45"
+       id="text38"><tspan
+         sodipodi:role="line"
+         id="tspan38"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="241.00002"
+         y="45">Colores</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:8.46667px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="241.00002"
+       y="75"
+       id="text39"><tspan
+         sodipodi:role="line"
+         id="tspan39"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:8.46667px;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="241.00002"
+         y="75" /></text>
+    <g
+       id="g1">
+      <g
+         id="g49"
+         transform="translate(4.6143778,12.748555)"
+         style="fill:#3b3b3b;fill-opacity:0.202742;filter:url(#filter49)">
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect45"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect46"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect47"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect48"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect49"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <g
+         id="g31"
+         transform="translate(5.1435445,13.277722)">
+        <rect
+           style="fill:#165a9e;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect17"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#0072ba;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect20"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#43a2d6;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect21"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#6dbcda;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect22"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#acdae7;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect23"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="244.27222"
+         y="68.967926"
+         id="text40"><tspan
+           sodipodi:role="line"
+           id="tspan40"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="244.27222"
+           y="68.967926">#165A9E</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="261.73767"
+         y="68.967926"
+         id="text41"><tspan
+           sodipodi:role="line"
+           id="tspan41"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="261.73767"
+           y="68.967926">#0072BA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="279.53391"
+         y="68.967926"
+         id="text42"><tspan
+           sodipodi:role="line"
+           id="tspan42"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="279.53391"
+           y="68.967926">#43A2D6</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="296.8671"
+         y="68.967926"
+         id="text43"><tspan
+           sodipodi:role="line"
+           id="tspan43"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="296.8671"
+           y="68.967926">#6DBCDA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="315.28598"
+         y="68.967926"
+         id="text44"><tspan
+           sodipodi:role="line"
+           id="tspan44"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="315.28598"
+           y="68.967926">#ACDAE7</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="240.53102"
+         y="74.933853"
+         id="text45"><tspan
+           sodipodi:role="line"
+           id="tspan45"
+           style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="240.53102"
+           y="74.933853">Corporate Blues</tspan></text>
+    </g>
+    <g
+       id="g2"
+       transform="translate(0.05336598,-0.00913518)">
+      <g
+         id="g92"
+         transform="translate(4.5680725,42.693474)"
+         style="fill:#3b3b3b;fill-opacity:0.2;filter:url(#filter92)">
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.2;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect88"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.2;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect89"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.2;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect90"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.2;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect91"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.2;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect92"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <g
+         id="g31-7"
+         transform="translate(5.0972392,43.222641)">
+        <rect
+           style="fill:#c85aa3;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect17-0"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#d586bb;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect20-9"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#dea5cb;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect21-3"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#e7bdd9;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect22-6"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#eedfeb;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect23-0"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="243.35466"
+         y="98.912849"
+         id="text40-6"><tspan
+           sodipodi:role="line"
+           id="tspan40-2"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="243.35466"
+           y="98.912849">#C85AA3</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="261.78494"
+         y="98.912849"
+         id="text41-6"><tspan
+           sodipodi:role="line"
+           id="tspan41-1"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="261.78494"
+           y="98.912849">#D586BB</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="279.32224"
+         y="98.912849"
+         id="text42-8"><tspan
+           sodipodi:role="line"
+           id="tspan42-7"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="279.32224"
+           y="98.912849">#DEA5CB</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="297.68066"
+         y="98.912849"
+         id="text43-9"><tspan
+           sodipodi:role="line"
+           id="tspan43-2"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="297.68066"
+           y="98.912849">#E7BDD9</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="316.20447"
+         y="98.912849"
+         id="text44-0"><tspan
+           sodipodi:role="line"
+           id="tspan44-2"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="316.20447"
+           y="98.912849">#EEDFEB</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="240.48471"
+         y="104.87878"
+         id="text45-3"><tspan
+           sodipodi:role="line"
+           id="tspan45-7"
+           style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="240.48471"
+           y="104.87878">Soft Lilacs</tspan></text>
+    </g>
+    <g
+       id="g51"
+       transform="translate(0.03868754,30.054074)">
+      <g
+         id="g16"
+         transform="translate(4.5680722,42.693474)"
+         style="fill:#3b3b3b;fill-opacity:0.202742;filter:url(#filter49-7)">
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect12"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect13"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect14"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect15"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect16"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <g
+         id="g41"
+         transform="translate(5.0972392,43.222641)">
+        <rect
+           style="fill:#3e8765;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect32"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#49a078;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect38"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#58bb94;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect39"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#6dc5a5;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect40"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#89d1c0;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect41"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="244.39131"
+         y="98.912849"
+         id="text46"><tspan
+           sodipodi:role="line"
+           id="tspan46"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="244.39131"
+           y="98.912849">#3E8765</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="261.98898"
+         y="98.912849"
+         id="text47"><tspan
+           sodipodi:role="line"
+           id="tspan47"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="261.98898"
+           y="98.912849">#49A078</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="280.00479"
+         y="98.912849"
+         id="text48"><tspan
+           sodipodi:role="line"
+           id="tspan48"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="280.00479"
+           y="98.912849">#58BB94</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="297.2514"
+         y="98.912849"
+         id="text49"><tspan
+           sodipodi:role="line"
+           id="tspan49"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="297.2514"
+           y="98.912849">#6DC5A5</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="315.84058"
+         y="98.912849"
+         id="text50"><tspan
+           sodipodi:role="line"
+           id="tspan50"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="315.84058"
+           y="98.912849">#89D1C0</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="240.48471"
+         y="104.87878"
+         id="text51"><tspan
+           sodipodi:role="line"
+           id="tspan51"
+           style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="240.48471"
+           y="104.87878">(Secondary) Patos Green</tspan></text>
+    </g>
+    <g
+       id="g65"
+       transform="translate(0.00561462,60.054073)">
+      <g
+         id="g55"
+         transform="translate(4.5680722,42.693474)"
+         style="fill:#3b3b3b;fill-opacity:0.202742;filter:url(#filter49-7)">
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect51"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect52"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect53"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect54"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect55"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <g
+         id="g60"
+         transform="translate(5.0972392,43.222641)">
+        <rect
+           style="fill:#c81f14;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect56"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#d62f20;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect57"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#dc4834;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect58"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#dd634e;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect59"
+           width="15"
+           height="15"
+           x="289.84189"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#de7f69;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect60"
+           width="15"
+           height="15"
+           x="307.83652"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="244.71713"
+         y="98.912849"
+         id="text60"><tspan
+           sodipodi:role="line"
+           id="tspan60"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="244.71713"
+           y="98.912849">#C81F14</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="261.89328"
+         y="98.912849"
+         id="text61"><tspan
+           sodipodi:role="line"
+           id="tspan61"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="261.89328"
+           y="98.912849">#D62F20</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="279.51389"
+         y="98.912849"
+         id="text62"><tspan
+           sodipodi:role="line"
+           id="tspan62"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="279.51389"
+           y="98.912849">#DC4834</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="297.61438"
+         y="98.912849"
+         id="text63"><tspan
+           sodipodi:role="line"
+           id="tspan63"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="297.61438"
+           y="98.912849">#DD634E</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="316.14603"
+         y="98.912849"
+         id="text64"><tspan
+           sodipodi:role="line"
+           id="tspan64"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="316.14603"
+           y="98.912849">#DE7F69</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="240.48471"
+         y="104.87878"
+         id="text65"><tspan
+           sodipodi:role="line"
+           id="tspan65"
+           style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="240.48471"
+           y="104.87878">(Secondary) Soft Danger Red</tspan></text>
+    </g>
+    <g
+       id="g79"
+       transform="translate(114.02121)">
+      <g
+         id="g69"
+         transform="translate(4.6143778,12.748555)"
+         style="fill:#3b3b3b;fill-opacity:0.202742;filter:url(#filter49)">
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect65"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect66"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect67"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <g
+         id="g74"
+         transform="translate(5.1435445,13.277722)">
+        <rect
+           style="fill:#0f0a0a;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect70"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#2b2525;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect71"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#5d5353;fill-opacity:1;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect72"
+           width="15"
+           height="15"
+           x="271.84723"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="243.44536"
+         y="68.967926"
+         id="text74"><tspan
+           sodipodi:role="line"
+           id="tspan74"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="243.44536"
+           y="68.967926">#0F0A0A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="262.03293"
+         y="68.967926"
+         id="text75"><tspan
+           sodipodi:role="line"
+           id="tspan75"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="262.03293"
+           y="68.967926">#2B2525</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="279.98077"
+         y="68.967926"
+         id="text76"><tspan
+           sodipodi:role="line"
+           id="tspan76"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="279.98077"
+           y="68.967926">#5D5353</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="240.53102"
+         y="74.933853"
+         id="text79"><tspan
+           sodipodi:role="line"
+           id="tspan79"
+           style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="240.53102"
+           y="74.933853">Smoke Black / Grays</tspan></text>
+    </g>
+    <g
+       id="g87"
+       transform="translate(114.02121,29.991695)">
+      <g
+         id="g81"
+         transform="translate(4.6143778,12.748555)"
+         style="fill:#3b3b3b;fill-opacity:0.202742;filter:url(#filter49)">
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect79"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#3b3b3b;fill-opacity:0.202742;stroke-width:2.63548;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.263548, 0.263548;paint-order:markers stroke fill"
+           id="rect80"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <g
+         id="g84"
+         transform="translate(5.1435445,13.277722)">
+        <rect
+           style="fill:#f9f8f8;fill-opacity:1;stroke:#5d5353;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.04, 0.04;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect82"
+           width="15"
+           height="15"
+           x="235.85797"
+           y="37.770172"
+           rx="0.40000001" />
+        <rect
+           style="fill:#e9e3e3;fill-opacity:1;stroke:#5d5353;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.04, 0.04;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect83"
+           width="15"
+           height="15"
+           x="253.8526"
+           y="37.770172"
+           rx="0.40000001" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="244.90047"
+         y="68.967926"
+         id="text84"><tspan
+           sodipodi:role="line"
+           id="tspan84"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="244.90047"
+           y="68.967926">#F9F8F8</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.8483px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="262.43225"
+         y="68.967926"
+         id="text85"><tspan
+           sodipodi:role="line"
+           id="tspan85"
+           style="fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="262.43225"
+           y="68.967926">#E9E3E3</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.00445048px;fill:#000000;fill-opacity:1;stroke-width:0.504621;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0504621, 0.0504621;paint-order:markers stroke fill"
+         x="240.53102"
+         y="74.933853"
+         id="text87"><tspan
+           sodipodi:role="line"
+           id="tspan87"
+           style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke-width:0.504621"
+           x="240.53102"
+           y="74.933853">Off-whites</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="349"
+       y="135"
+       id="text92"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="349"
+         y="135"
+         id="tspan93">Tipografías</tspan></text>
+    <path
+       style="fill:#de7f69;fill-opacity:1;stroke:#5d5353;stroke-width:0.622828;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0622828, 0.0622828;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 241.26813,46.227526 H 264.6075"
+       id="path93"
+       inkscape:path-effect="#path-effect93"
+       inkscape:original-d="m 241.26813,46.227526 c 7.77979,0 23.33937,0 23.33937,0"
+       transform="matrix(0.80842466,0,0,1,48.454792,0.26458331)" />
+    <path
+       style="fill:#de7f69;fill-opacity:1;stroke:#5d5353;stroke-width:0.622828;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0622828, 0.0622828;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 238.54989,46.227526 h 3.6773"
+       id="path94"
+       inkscape:path-effect="#path-effect95"
+       inkscape:original-d="m 238.54989,46.227526 h 3.6773"
+       transform="matrix(0.80842466,0,0,1,158.49665,90.442261)"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#de7f69;fill-opacity:1;stroke:#5d5353;stroke-width:0.622828;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0622828, 0.0622828;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 238.00516,46.227526 h 20.09682"
+       id="path95"
+       inkscape:path-effect="#path-effect97"
+       inkscape:original-d="m 238.00516,46.227526 h 20.09682"
+       transform="matrix(0.80842466,0,0,1,173.56085,90.442261)"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#de7f69;fill-opacity:1;stroke:#5d5353;stroke-width:0.622828;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0622828, 0.0622828;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 237.76714,46.227526 h 8.44267"
+       id="path97"
+       inkscape:path-effect="#path-effect99"
+       inkscape:original-d="m 237.76714,46.227526 h 8.44267"
+       transform="matrix(0.80842466,0,0,1,163.979,90.442261)"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87778px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="354.55585"
+       y="150"
+       id="text99"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87778px;font-family:'Jost*';-inkscape-font-specification:'Jost* Bold';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="354.55585"
+         y="150"
+         id="tspan99">HEADING 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.82222px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="355.84183"
+       y="153.4865"
+       id="text100"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Jost*';-inkscape-font-specification:'Jost*';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="355.84183"
+         y="153.4865"
+         id="tspan100">Jost*, 28px, bold</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:8.46667px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="354.55585"
+       y="168"
+       id="text102"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46667px;font-family:'Jost*';-inkscape-font-specification:'Jost* Semi-Bold';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="354.55585"
+         y="168"
+         id="tspan102">Heading 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.82222px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="355.84183"
+       y="171.4865"
+       id="text103"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Jost*';-inkscape-font-specification:'Jost*';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="355.84183"
+         y="171.4865"
+         id="tspan103">Jost*, 24px, semi-bold</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.35px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="354.55585"
+       y="185.91537"
+       id="text104"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.35px;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="354.55585"
+         y="185.91537"
+         id="tspan104">Heading 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.82222px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="355.84183"
+       y="189.40187"
+       id="text105"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Jost*';-inkscape-font-specification:'Jost*';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="355.84183"
+         y="189.40187"
+         id="tspan105">Jost*, 18px, medium</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="354.55585"
+       y="203.95358"
+       id="text107"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Jost*';-inkscape-font-specification:'Jost*';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="354.55585"
+         y="203.95358"
+         id="tspan107">Body</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.82222px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="355.84183"
+       y="207.44008"
+       id="text108"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Jost*';-inkscape-font-specification:'Jost*';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="355.84183"
+         y="207.44008"
+         id="tspan108">Jost*, 16px</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;line-height:1;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';letter-spacing:0px;word-spacing:0.0132292px;fill:#000000;fill-opacity:1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.15, 0.15;paint-order:markers stroke fill"
+       x="241.00002"
+       y="180"
+       id="text109"><tspan
+         sodipodi:role="line"
+         id="tspan109"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'Jost*';-inkscape-font-specification:'Jost* Medium';fill:#000000;fill-opacity:1;stroke-width:1.5"
+         x="241.00002"
+         y="180">Elementos</tspan></text>
+    <path
+       style="fill:#de7f69;fill-opacity:1;stroke:#5d5353;stroke-width:0.622828;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.0622828, 0.0622828;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 241.26813,46.227526 h 33.80361"
+       id="path109"
+       inkscape:path-effect="#path-effect110"
+       inkscape:original-d="m 241.26813,46.227526 h 33.80361"
+       transform="matrix(0.80842466,0,0,1,48.454792,135.26458)"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

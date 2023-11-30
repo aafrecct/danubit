@@ -1,0 +1,15 @@
+{
+  "short_name": "ACM",
+  "long_name": "Asocaiation for Computer Machinery de la UPM",
+  "email": "acm@alumnos.fi.upm.es",
+  "description": "Anarco Comunismo Mediterraneo",
+  "is_public_joinable": true,
+  "info": {
+    "links": {
+      "twitter": "acmupm",
+      "instagram": "acmupm",
+      "gmail": "acmfiupm@gmail.com",
+      "telegram": "acmupm"
+    }
+  }
+}

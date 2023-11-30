@@ -1,0 +1,43 @@
+gantt
+  dateFormat YYYY-MM-DD
+  axisFormat %d-%b
+  tickInterval 2week
+  weekday monday
+
+  section Requisitos
+    World Café                            :done,    r1,   2023-09-11,     2w
+    Especificación de Requisitos          :done,    r2,   2023-09-18,     1w
+  
+  section Backend
+    Diseño Modelo de Datos Inicial        :done,    b1,   2023-09-18,     1w 
+    Diseño API Inicial                    :done,    b2,   after b1,       2w
+    Implementación API básica             :active,  b3,   after b2,       6w
+    Implementación sistema usuarios       :active,  b4,   after b3,       2w
+    Implementación módulo SMTP            :         b5,   after b4,       2w
+    Implementación módulo PDF             :         b6,   after b5,       2w
+
+
+  section Frontend
+    Diseño prototipo usabilidad (1)       :done,    f1,   2023-09-25,     2w
+    Pruebas prototipo usabilidad (1)      :done,    f2,   after f1,       4w
+    Diseño prototipo usabilidad (2)       :active,  f3,   after f2,       2w
+    Pruebas prototipo usabilidad (2)      :active,  f4,   after f3,       2w
+    Creación de un pequeño design system  :active,  f5,   after f2,       1w
+    Implementación frontpage              :active,  f6,   after f5,       2w
+    Implementación dashboard              :         f7,   after f6,       2w
+    Implementación activity manager       :         f8,   after f7,       2w
+    Diseño prototipo usabilidad (3)       :         f11,  after f6,       2w
+    Pruebas prototipo usabilidad (3)      :         f12,  after f11,       2w
+    Implementación member manager         :         f9,   after f8,       1w
+    Implementación newsletter             :         f10,  after f9,       1w
+
+
+  section Validación
+    Validación inicial                    :         v1,   after f7,       1w
+    Validación final                      :         v2,   after f9,       1w
+
+  section Documentación
+    Finalizar Documentación               :         d1,   after f8,       3w
+    Charla ACM                            :         d2,   after f8,       1w
+
+    

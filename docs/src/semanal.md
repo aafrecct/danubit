@@ -21,7 +21,7 @@ a configurar la base de datos de desarrollo y diseñar una API.
 
 La tercera semana comenzo el diseño del prototipo de usabilidad.
 La primera versión creó cierta discusión en Asociaciones sobre cual debía ser 
-la interfaz pública del sistema.
+la interfaz pública del sistema. Sobretodo de la página principal.
 
 La cuarta semana empezé el trabajo sobre la implementación del backend
 y de la base de datos.

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient24">
+      <stop
+         style="stop-color:#9c1a12;stop-opacity:1;"
+         offset="0"
+         id="stop25" />
+      <stop
+         style="stop-color:#bc1d13;stop-opacity:0.27058824;"
+         offset="0.20548056"
+         id="stop32" />
+      <stop
+         style="stop-color:#c81f14;stop-opacity:0;"
+         offset="0.5"
+         id="stop27" />
+      <stop
+         style="stop-color:#ba1d13;stop-opacity:0.30980392;"
+         offset="0.81101578"
+         id="stop36" />
+      <stop
+         style="stop-color:#9c1a12;stop-opacity:1;"
+         offset="1"
+         id="stop26" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient9">
+      <stop
+         style="stop-color:#ae261a;stop-opacity:1;"
+         offset="0"
+         id="stop9" />
+      <stop
+         style="stop-color:#b7271b;stop-opacity:0.5372549;"
+         offset="0.14157018"
+         id="stop12" />
+      <stop
+         style="stop-color:#c22a1d;stop-opacity:0;"
+         offset="0.5"
+         id="stop11" />
+      <stop
+         style="stop-color:#b9281b;stop-opacity:0.40392157;"
+         offset="0.83040673"
+         id="stop13" />
+      <stop
+         style="stop-color:#ae261a;stop-opacity:1;"
+         offset="1"
+         id="stop10" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient9"
+       id="linearGradient10"
+       x1="1.9924824"
+       y1="5.792255"
+       x2="4.4461267"
+       y2="5.792255"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.9038733,2.546005)" />
+    <linearGradient
+       xlink:href="#linearGradient24"
+       id="linearGradient26"
+       x1="5.0765967"
+       y1="6.3387376"
+       x2="7.530241"
+       y2="6.3387376"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.6869452)" />
+  </defs>
+  <g
+     id="layer1">
+    <g
+       id="g50"
+       transform="translate(-0.20677095,-0.28235657)">
+      <path
+         id="rect2"
+         style="fill:#d62f20;fill-opacity:1;stroke-width:5.85188;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 6.35,7.0088448 v 4.3790322 c 0,0.432104 -2.4536443,0.426853 -2.4536443,0 V 7.0088448 c 0,-0.5510236 2.4536443,-0.507556 2.4536443,0 z" />
+      <path
+         id="path9"
+         style="fill:url(#linearGradient10);fill-opacity:1;stroke-width:5.85188;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 6.35,6.9757515 v 4.4121255 c 0,0.432104 -2.4536443,0.426853 -2.4536443,0 V 6.9757515 c 0,-0.5510236 2.4536443,-0.507556 2.4536443,0 z" />
+      <path
+         id="path5"
+         style="fill:#c81f14;fill-opacity:1;stroke-width:5.85188;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 9.2171862,1.9518588 v 9.4360182 c 0,0.432104 -2.4536443,0.426853 -2.4536443,0 V 1.9518588 c 0,-0.5510236 2.4536443,-0.507556 2.4536443,0 z" />
+      <path
+         id="path8"
+         style="fill:#a22319;fill-opacity:1;stroke-width:5.85188;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 6.35,6.9676915 v 0.035464 c 0,0.4321034 -2.4536443,0.4268529 -2.4536443,0 v -0.035464 c 0,-0.5510236 2.4536443,-0.507556 2.4536443,0 z" />
+      <path
+         id="path22"
+         style="fill:url(#linearGradient26);fill-opacity:1;stroke-width:5.85188;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 9.2171862,1.9518588 v 9.4360182 c 0,0.432104 -2.4536443,0.426853 -2.4536443,0 V 1.9518588 c 0,-0.5510236 2.4536443,-0.507556 2.4536443,0 z" />
+      <path
+         id="path13"
+         style="fill:#9e1910;fill-opacity:1;stroke-width:5.85188;stroke-linejoin:round;paint-order:markers stroke fill"
+         d="m 9.2171862,1.9518582 v 0.154811 c 0,0.432104 -2.4536443,0.426853 -2.4536443,0 v -0.154811 c 0,-0.551023 2.4536443,-0.507555 2.4536443,0 z" />
+    </g>
+  </g>
+</svg>

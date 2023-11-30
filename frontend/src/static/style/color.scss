@@ -1,0 +1,73 @@
+:root {
+  --blue:         #165a9e;
+  --light-blue:   #6dbcda;
+
+  --blue-0:       #165a9e;
+  --blue-1:       #0072ba;
+  --blue-2:       #43a2d6;
+  --blue-3:       #6dbcda;
+  --blue-4:       #acdae7;
+
+  --lilac:        #d586bb;
+  --light-lilac:  #eedfeb;
+
+  --lilac-0:      #c85aa3;
+  --lilac-1:      #d586bb;
+  --lilac-2:      #dea5cb;
+  --lilac-3:      #e7bdd9;
+  --lilac-4:      #eedfeb;
+
+  --green:        #3e8765;
+  --light-green:  #6dc5a5;
+
+  --green-0:      #3e8765;
+  --green-1:      #49a078;
+  --green-2:      #58bb94;
+  --green-3:      #6dc5a5;
+  --green-4:      #89d1c0;
+
+  --red:          #c81f14;
+  --light-red:    #dc4834;
+  --salmon:       #de7f69;
+
+  --red-0:        #c81f14;
+  --red-1:        #d62f20;
+  --red-2:        #dc4834;
+  --red-3:        #dd634e;
+  --red-4:        #de7f69;
+
+  --black:        #0f0a0a;
+  --gray:         #5d5353;
+  --white:        #f9f8f8;
+
+  --black-0:      #0f0a0a;
+  --black-1:      #2b2525;
+  --black-2:      #5d5353;
+  --white-0:      #f9f8f8;
+  --white-1:      #e9e3e3;
+
+  --main-color:   #165a9e;
+  --second-color: #d586bb;
+  --yes-color:    #3e8765;
+  --no-color:     #c81f14;
+}
+
+body {
+  background: linear-gradient(to bottom, var(--white-1),var(--light-lilac));
+}
+
+header {
+  background-color: var(--black);
+
+  nav {
+
+    a {
+      color: var(--white);
+
+      &.active{
+        color: var(--light-blue);
+        border-color: var(--light-blue);
+      }
+    }
+  }
+}
