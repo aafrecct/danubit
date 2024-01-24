@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS asociations (
   email                 EMAIL           UNIQUE NOT NULL,
   description           TEXT            NOT NULL,
   is_public_joinable    BOOLEAN         NOT NULL,
-  info                  JSONB           NOT NULL
+  info                  JSONB           NOT NULL DEFAULT '{}'::jsonb
 );
   

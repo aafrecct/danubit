@@ -1,51 +1,59 @@
 # Endpoints
 
 ## Regular API
-```
-GET     /api/asos
-GET     /api/asos/{id}
-PUT     /api/asos/{id}
+- (x) GET     /api/managers
 
-GET     /api/asos/{id}/membershipRequests
-POST    /api/asos/{id}/membershipRequests
-POST    /api/asos/{id}/membershipRequests/{id}
+- (x) GET     /api/asociations
+- (x) GET     /api/asociations/{id}
+- (x) GET     /api/asociations/byName/{name}
+- (x) PUT     /api/asociations/{id}
+- (x) POST    /api/asociations
 
-GET     /api/asos/{id}/publicDocuments
-GET     /api/asos/{id}/documents
-POST    /api/asos/{id}/documents
-PUT     /api/asos/{id}/documents/{id}
+- (x) GET     /api/asociations/{id}/membershipRequests
+- (-) POST    /api/asociations/{id}/membershipRequests
+- (-) PATCH   /api/asociations/{id}/membershipRequests/{id}
+- (-) DELETE  /api/asociations/{id}/membershipRequests/{id}
 
-GET     /api/asos/{id}/materials
-GET     /api/asos/{id}/lendableMaterials
-POST    /api/asos/{id}/materials
-POST    /api/asos/{id}/lendableMaterials
-PUT     /api/asos/{id}/materials/{id}
-DELETE  /api/asos/{id}/materials/{id}
+- (-) GET     /api/asociations/{id}/members
+- (-) PUT     /api/asociations/{id}/members/{id}
+- (-) DELETE  /api/asociations/{id}/members/{id}
 
-GET     /api/managers
+- (-) GET     /api/asociations/{id}/publicDocuments
+- (-) GET     /api/asociations/{id}/documents
+- (-) POST    /api/asociations/{id}/documents
+- (-) PATCH   /api/asociations/{id}/documents/{id}
 
-GET     /api/publicActivities
-GET     /api/memberActivities
-GET     /api/boardActivities
+- (-) GET     /api/asociations/{id}/materials
+- (-) GET     /api/asociations/{id}/lendableMaterials
+- (-) POST    /api/asociations/{id}/materials
+- (-) PUT     /api/asociations/{id}/materials/{id}
+- (-) DELETE  /api/asociations/{id}/materials/{id}
 
-POST    /api/activities
-GET     /api/activities/{id}
-PUT     /api/activities/{id}
+- (-) GET     /api/publicActivities
+- (-) GET     /api/memberActivities
+- (-) GET     /api/boardActivities
 
-POST    /api/activities/{id}/media
-DELETE  /api/activities/{id}/media/{id}
+- (-) POST    /api/activities
+- (-) GET     /api/activities/{id}
+- (-) PUT     /api/activities/{id}
+- (-) DELETE  /api/activities/{id}
 
-GET     /api/activities/{id}/registration
-POST    /api/activities/{id}/registration
-```
+- (-) POST    /api/activities/{id}/media
+- (-) DELETE  /api/activities/{id}/media/{id}
+
+- (?) POST    /api/activities/{id}/registration
+- (?) DELETE  /api/activities/{id}/registration
+
 
 ## Auth API
 
-- `/auth/signup`
-- `/auth/login`
-- `/auth/logout`
-- `/auth/change_username`
-- `/auth/change_password`
+- ( ) `/auth/standins`
+- ( ) `/auth/signup`
+- ( ) `/auth/activate`
+- ( ) `/auth/login`
+- ( ) `/auth/logout`
+- ( ) `/auth/change_username`
+- ( ) `/auth/change_password`
 
 
 

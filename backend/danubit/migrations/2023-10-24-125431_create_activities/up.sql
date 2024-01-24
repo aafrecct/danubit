@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS activities (
   is_media_accepted       BOOLEAN         NOT NULL,
   is_registration_needed  BOOLEAN         NOT NULL,
   access                  ACTIVITY_ACCESS NOT NULL,
-  additional_info         JSONB           NOT NULL
+  additional_info         JSONB           NOT NULL DEFAULT '{}'::jsonb
 );
 
 CREATE TABLE IF NOT EXISTS organizers (

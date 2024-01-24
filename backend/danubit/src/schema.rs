@@ -160,8 +160,10 @@ diesel::table! {
         #[max_length = 64]
         surname -> Varchar,
         email -> Varchar,
+        activated -> Bool,
         #[max_length = 60]
-        password_hash -> Bpchar,
+        password_hash -> Nullable<Bpchar>,
+        additional_info -> Jsonb,
     }
 }
 

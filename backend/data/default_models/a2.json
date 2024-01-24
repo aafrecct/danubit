@@ -1,0 +1,12 @@
+{
+  "short_name": "TKA",
+  "long_name": "The Kewl Asociation",
+  "email": "wekewl@coolness.com",
+  "description": "We just kewl like that.",
+  "is_public_joinable": true,
+  "info": {
+    "links": {
+      "telegram": "kewlasoc"
+    }
+  }
+}
