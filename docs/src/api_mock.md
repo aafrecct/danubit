@@ -10,24 +10,24 @@
 - (x) POST    /api/asociations
 
 - (x) GET     /api/asociations/{id}/membershipRequests
-- (-) POST    /api/asociations/{id}/membershipRequests
-- (-) PATCH   /api/asociations/{id}/membershipRequests/{id}
-- (-) DELETE  /api/asociations/{id}/membershipRequests/{id}
+- (x) POST    /api/asociations/{id}/membershipRequests
+- (x) PATCH   /api/asociations/{id}/membershipRequests/{id}
+- (x) DELETE  /api/asociations/{id}/membershipRequests/{id}
 
-- (-) GET     /api/asociations/{id}/members
-- (-) PUT     /api/asociations/{id}/members/{id}
-- (-) DELETE  /api/asociations/{id}/members/{id}
+- (x) GET     /api/asociations/{id}/members
+- (x) PUT     /api/asociations/{id}/members/{id}
+- (x) DELETE  /api/asociations/{id}/members/{id}
 
-- (-) GET     /api/asociations/{id}/publicDocuments
-- (-) GET     /api/asociations/{id}/documents
+- (x) GET     /api/asociations/{id}/publicDocuments
+- (x) GET     /api/asociations/{id}/documents
 - (-) POST    /api/asociations/{id}/documents
 - (-) PATCH   /api/asociations/{id}/documents/{id}
 
-- (-) GET     /api/asociations/{id}/materials
-- (-) GET     /api/asociations/{id}/lendableMaterials
-- (-) POST    /api/asociations/{id}/materials
-- (-) PUT     /api/asociations/{id}/materials/{id}
-- (-) DELETE  /api/asociations/{id}/materials/{id}
+- (x) GET     /api/asociations/{id}/materials
+- (x) GET     /api/asociations/{id}/lendableMaterials
+- (x) POST    /api/asociations/{id}/materials
+- (x) PUT     /api/asociations/{id}/materials/{id}
+- (x) DELETE  /api/asociations/{id}/materials/{id}
 
 - (-) GET     /api/publicActivities
 - (-) GET     /api/memberActivities
@@ -57,3 +57,17 @@
 
 
 
+## Web paths`
+
+- ( ) `/`
+- ( ) `/asociations`
+- ( ) `/asociation/[asociation]`
+- ( ) `/activities`
+- ( ) `/activities/[activity]`
+- ( ) `/activities/[activity]/edit`
+- ( ) `/login`
+- ( ) `/register`
+- ( ) `/dashboard/`
+- ( ) `/dashboard/[asociation]`
+- ( ) `/dashboard/[asociation]/members`
+- ( ) `/dashboard/[asociation]/activity`

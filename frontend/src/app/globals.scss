@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --blue: #165a9e;
+  --light-blue: #6dbcda;
+  --blue-0: #165a9e;
+  --blue-1: #0072ba;
+  --blue-2: #43a2d6;
+  --blue-3: #6dbcda;
+  --blue-4: #acdae7;
+  --lilac: #d586bb;
+  --light-lilac: #eedfeb;
+  --lilac-0: #c85aa3;
+  --lilac-1: #d586bb;
+  --lilac-2: #dea5cb;
+  --lilac-3: #e7bdd9;
+  --lilac-4: #eedfeb;
+  --green: #3e8765;
+  --light-green: #6dc5a5;
+  --green-0: #3e8765;
+  --green-1: #49a078;
+  --green-2: #58bb94;
+  --green-3: #6dc5a5;
+  --green-4: #89d1c0;
+  --red: #c81f14;
+  --light-red: #dc4834;
+  --salmon: #de7f69;
+  --red-0: #c81f14;
+  --red-1: #d62f20;
+  --red-2: #dc4834;
+  --red-3: #dd634e;
+  --red-4: #de7f69;
+  --red-5: #f7c4b9;
+  --black: #0f0a0a;
+  --gray: #5d5353;
+  --white: #f9f8f8;
+  --black-0: #0f0a0a;
+  --black-1: #2b2525;
+  --black-2: #5d5353;
+  --white-0: #f9f8f8;
+  --white-1: #e9e3e3;
+  --main-color: #165a9e;
+  --second-color: #d586bb;
+  --yes-color: #3e8765;
+  --no-color: #c81f14;
+  --shadows: #5d535350;
+}
+
+html,
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to bottom, var(--white-1), var(--light-lilac));
+  font-family: "Jost", sans-serif;
+}
+
+body * {
+  font-family: "Jost", sans-serif;
+}
+
+header {
+  width: 100%;
+  height: max(3rem, 48px);
+}
+
+main {
+  width: 100%;
+  height: calc(100% - max(3rem, 48px));
+}
+
+/* HEADER */
+
+#bar {
+  background-color: var(--black);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: var(--shadows) 0 2px 2px 0;
+
+  * {
+    max-height: 96%;
+    position: relative;
+  }
+
+  #bar-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    #bar-logo {
+      display: block;
+      max-width: 100%;
+
+      img {
+        display: block;
+        height: 100%;
+      }
+    }
+
+    #bar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+
+      a {
+        display: block;
+        margin: 0 .6rem;
+
+        color: var(--white);
+        text-decoration: none;
+
+        &:hover {
+          box-shadow: var(--red-4) 0 2px 0 0;
+          color: var(--red-4);
+        }
+
+        &.active {
+          color: var(--light-blue);
+          border-color: var(--light-blue);
+        }
+      }
+    }
+  }
+
+  #bar-right {
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      a {
+        display: block;
+        margin-right: .6rem;
+        padding: .4rem .6rem;
+
+        background-color: var(--light-lilac);
+        border-radius: 2px;
+
+        color: var(--black);
+        text-decoration: none;
+
+        &:hover {
+          box-shadow: var(--red-1) 0 2px 0 0;
+        }
+      }
+    }
+  }
+}
+
+/* LOGIN and SIGNUP */
+
+#login-backdrop,
+#signup-backdrop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #login-box,
+  #signup-box {
+    background-color: var(--white);
+
+    padding: 1rem;
+
+    box-shadow: var(--shadows) 2px 2px 2px 0;
+
+    border-radius: 2px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+
+    * {
+      margin: .2rem 0;
+    }
+
+    input {
+      min-width: 40ch;
+    }
+
+    button {
+      margin: .4rem 0;
+      align-self: flex-end;
+
+      padding: .4rem .6rem;
+      background-color: var(--yes-color);
+      color: var(--white);
+
+      border: none;
+      border-radius: 2px;
+
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ASOCIATIONS */
+
+#asociations-backdrop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #asociations {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a {
+      padding: .2rem;
+      margin: 1rem;
+
+      border-radius: 2px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-decoration: none;
+      color: var(--black-1);
+      transition: all .2s linear;
+
+      height: 14rem;
+
+      * {
+        transition: inherit;
+        text-align: center;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 100%;
+
+        width: 10rem;
+        height: 10rem;
+
+        img {
+          padding: 8%;
+          width: 92%;
+        }
+      }
+
+      span {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+
+      &:hover {
+        div {
+          box-shadow: var(--red-4) 0 0 1px 0, inset var(--red-4) 0 0 1px 0;
+        }
+
+        span {
+          margin-top: 2rem;
+          box-shadow: var(--red-0) 0 2px 0 0;
+        }
+      }
+    }
+  }
+}
+
+/* ACTIVITIES */
+
+#activities-backdrop {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  #activities {
+    margin-top: 2rem;
+
+    min-width: 40rem;
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    div {
+      position: relative;
+      width: 100%;
+
+      border: solid 2px var(--red-3);
+      border-radius: 2px;
+
+      padding: .4rem;
+      margin: .6rem;
+
+      &:hover {
+        background-color: var(--red-5);
+      }
+
+      * {
+        display: block;
+      }
+
+      #activity-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      #activity-room {
+        color: var(--gray);
+      }
+
+      button {
+        position: absolute;
+        right: .4rem;
+        bottom: .4rem;
+
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--white);
+        background-color: var(--red);
+        border: none;
+        border-radius: 2px;
+        padding: .4rem .6rem;
+      }
+    }
+  }
+}
