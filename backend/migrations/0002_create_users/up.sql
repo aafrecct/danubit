@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
   surname           VARCHAR(64)     NOT NULL,
   email             EMAIL           UNIQUE NOT NULL,
   activated         BOOLEAN         NOT NULL,
-  password_hash     CHAR(60),
+  password_hash     VARCHAR(128),
   additional_info   JSONB           NOT NULL DEFAULT '{}'::jsonb
 );
   

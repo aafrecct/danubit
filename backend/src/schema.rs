@@ -117,7 +117,7 @@ diesel::table! {
         id -> Int8,
         #[max_length = 32]
         name -> Varchar,
-        activity -> Int8,
+        activity -> Nullable<Int8>,
         kind -> MediaKind,
         #[max_length = 128]
         path -> Varchar,
@@ -151,6 +151,15 @@ diesel::table! {
 }
 
 diesel::table! {
+    registration (id) {
+        id -> Int8,
+        activity -> Int8,
+        user_id -> Nullable<Uuid>,
+        registration_data -> Jsonb,
+    }
+}
+
+diesel::table! {
     users (id) {
         id -> Uuid,
         #[max_length = 32]
@@ -161,8 +170,8 @@ diesel::table! {
         surname -> Varchar,
         email -> Varchar,
         activated -> Bool,
-        #[max_length = 60]
-        password_hash -> Nullable<Bpchar>,
+        #[max_length = 128]
+        password_hash -> Nullable<Varchar>,
         additional_info -> Jsonb,
     }
 }
@@ -181,6 +190,8 @@ diesel::joinable!(members -> users (user_id));
 diesel::joinable!(organizers -> activities (activity));
 diesel::joinable!(organizers -> asociations (asociation));
 diesel::joinable!(organizers -> users (person_in_charge));
+diesel::joinable!(registration -> activities (activity));
+diesel::joinable!(registration -> users (user_id));
 
 diesel::allow_tables_to_appear_in_same_query!(
     activities,
@@ -192,5 +203,6 @@ diesel::allow_tables_to_appear_in_same_query!(
     media,
     members,
     organizers,
+    registration,
     users,
 );

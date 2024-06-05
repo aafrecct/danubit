@@ -2,6 +2,7 @@ use diesel::prelude::*;
 use poem_openapi::{types::multipart, Enum, Multipart, Object};
 use serde::{Deserialize, Serialize};
 use serde_json::Value as Json;
+use std::cmp::{PartialEq, PartialOrd};
 use time::{Date, PrimitiveDateTime};
 use uuid::Uuid;
 
@@ -15,7 +16,9 @@ pub enum ActivityAccess {
     Board,
 }
 
-#[derive(Serialize, Deserialize, Enum, Debug, diesel_derive_enum::DbEnum)]
+#[derive(
+    Serialize, Deserialize, Enum, PartialEq, PartialOrd, Debug, diesel_derive_enum::DbEnum,
+)]
 #[ExistingTypePath = "crate::schema::sql_types::BoardStatus"]
 pub enum BoardStatus {
     False,
@@ -46,6 +49,7 @@ pub struct Activity {
     pub id: i64,
     pub name: String,
     pub description: String,
+    pub room: String,
     pub initial_date: PrimitiveDateTime,
     pub is_multi_session: bool,
     pub is_creditable: bool,
@@ -64,6 +68,7 @@ pub struct Activity {
 pub struct NewActivity {
     pub name: String,
     pub description: String,
+    pub room: String,
     pub initial_date: PrimitiveDateTime,
     pub is_multi_session: bool,
     pub is_creditable: bool,
@@ -90,6 +95,7 @@ pub struct Asociation {
     pub is_public_joinable: bool,
     pub info: Json,
     pub manager: Option<i64>,
+    pub logo: Option<i64>,
 }
 
 #[derive(Insertable, Serialize, Deserialize, Object, Debug)]
@@ -175,7 +181,9 @@ pub struct NewManager {
     pub comms_email: Option<String>,
 }
 
-#[derive(Queryable, Selectable, Serialize, Deserialize, AsChangeset, Object, Debug)]
+#[derive(
+    Queryable, Selectable, Serialize, Deserialize, Identifiable, AsChangeset, Object, Debug,
+)]
 #[diesel(table_name = crate::schema::materials)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Material {
@@ -204,7 +212,7 @@ pub struct NewMaterial {
 pub struct Media {
     pub id: i64,
     pub name: String,
-    pub activity: i64,
+    pub activity: Option<i64>,
     pub kind: MediaKind,
     pub path: String,
 }
@@ -212,7 +220,7 @@ pub struct Media {
 #[derive(Serialize, Deserialize, Object, Debug)]
 pub struct MediaDescription {
     pub name: String,
-    pub activity: i64,
+    pub activity: Option<i64>,
     pub kind: MediaKind,
 }
 
@@ -249,16 +257,39 @@ pub struct NewMember {
 pub struct MembershipRequest {
     pub user_id: Uuid,
     pub asociation: Uuid,
-    pub is_accepted: bool,
 }
 
-#[derive(Queryable, Selectable)]
+#[derive(Serialize, Deserialize, Object, Debug)]
+pub struct MemberResponse {
+    pub id: i64,
+    pub user: User,
+    pub asociation: Uuid,
+    pub is_accepted: bool,
+    pub accepted_date: Option<Date>,
+    pub expiry_date: Option<Date>,
+    pub label: Option<String>,
+    pub board_status: BoardStatus,
+}
+
+#[derive(Identifiable, Queryable, Selectable, Associations, Debug)]
 #[diesel(table_name = crate::schema::organizers)]
+#[diesel(belongs_to(Asociation, foreign_key=asociation))]
+#[diesel(belongs_to(Activity, foreign_key=activity))]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Organizer {
     pub id: i64,
     pub asociation: Uuid,
     pub activity: i64,
+    pub person_in_charge: Uuid,
+}
+
+#[derive(Insertable, Debug)]
+#[diesel(table_name = crate::schema::organizers)]
+#[diesel(check_for_backend(diesel::pg::Pg))]
+pub struct NewOrganizer {
+    pub asociation: Uuid,
+    pub activity: i64,
+    pub person_in_charge: Uuid,
 }
 
 #[derive(
@@ -277,7 +308,7 @@ pub struct User {
     pub additional_info: Json,
 }
 
-#[derive(Insertable, Serialize, Deserialize, Object, Debug)]
+#[derive(Insertable, Serialize, Deserialize, Debug)]
 #[diesel(table_name = crate::schema::users)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct NewUser {
@@ -288,6 +319,41 @@ pub struct NewUser {
     pub activated: bool,
     pub password_hash: Option<String>,
     pub additional_info: Option<Json>,
+}
+
+#[derive(
+    Queryable, Selectable, Serialize, Deserialize, Identifiable, AsChangeset, Object, Debug,
+)]
+#[diesel(table_name = crate::schema::registration)]
+#[diesel(check_for_backend(diesel::pg::Pg))]
+pub struct Registration {
+    pub id: i64,
+    pub activity: i64,
+    pub user_id: Option<Uuid>,
+    pub registration_data: Json,
+}
+
+#[derive(Insertable, Serialize, Deserialize, AsChangeset, Object, Debug)]
+#[diesel(table_name = crate::schema::registration)]
+#[diesel(check_for_backend(diesel::pg::Pg))]
+pub struct NewRegistration {
+    pub activity: i64,
+    pub user_id: Option<Uuid>,
+    pub registration_data: Option<Json>,
+}
+
+#[derive(Serialize, Deserialize, Object, Debug)]
+pub struct FullActivity {
+    pub activity: Activity,
+    pub organizers: Vec<Asociation>,
+    pub people_in_charge: Vec<User>,
+}
+
+#[derive(Serialize, Deserialize, Object, Debug)]
+pub struct NewFullActivity {
+    pub activity: NewActivity,
+    pub organizers: Vec<Uuid>,
+    pub people_in_charge: Vec<Uuid>,
 }
 
 #[derive(Serialize, Deserialize, Object, Debug)]

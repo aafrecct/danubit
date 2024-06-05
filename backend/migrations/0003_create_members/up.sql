@@ -1,4 +1,4 @@
-CREATE TYPE BOARD_STATUS AS ENUM ('false', 'board', 'vicechair', 'chair');
+CREATE TYPE BOARD_STATUS AS ENUM ('false', 'board', 'vice_chair', 'chair');
 
 CREATE TABLE IF NOT EXISTS members (
   id                BIGINT          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
