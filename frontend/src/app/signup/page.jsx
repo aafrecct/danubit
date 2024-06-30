@@ -5,31 +5,37 @@ import { useSessionDispatch } from "@/app/session"
 import process from "process";
 import { home } from "@/app/actions";
 
-function SignupButton({ loginInfo }) {
+function SignupButton({ signupInfo }) {
   const authUrl = `http://${process.env.apiHost}/auth/signup`;
 
-  function tryLogin() {
+  function trySignup() {
+    if (signupInfo.password !== signupInfo.repeat_password) {
+      return
+    }
+
+    let { repeat_password, ...signup } = signupInfo;
+    console.log(JSON.stringify(signup));
+
     fetch(authUrl, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       method: "POST",
-      body: JSON.stringify(loginInfo)
+      body: JSON.stringify(signup)
     })
       .then((response) => {
         if (!response.ok) {
-          console.log("Wrong login info")
+          console.log("Wrong signup info")
+          console.log(response)
+          return
         }
-        return response.json()
-      })
-      .then((_) => {
         home()
       })
   }
 
   return (
-    <button onClick={tryLogin}> Registrarse </button>
+    <button onClick={trySignup}> Registrarse </button>
   )
 }
 
@@ -67,6 +73,9 @@ export default function LoginForm() {
 
         <span>Contraseña</span>
         <input name="email" onChange={handleField("password")} type="password" />
+
+        <span>Repetir contraseña</span>
+        <input name="email" onChange={handleField("repeat_password")} type="password" />
 
         <SignupButton signupInfo={signupInfo} />
       </div>

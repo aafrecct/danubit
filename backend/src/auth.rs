@@ -67,6 +67,20 @@ pub struct Standin {
     email: String,
 }
 
+#[derive(Serialize, Deserialize, Object, Debug)]
+pub struct PasswordChange {
+    email: String,
+    old_password: String,
+    new_password: String,
+}
+
+#[derive(Serialize, Deserialize, Object, Debug)]
+pub struct UsernameChange {
+    email: String,
+    new_username: String,
+    password: String,
+}
+
 pub struct DanubitAuthApi;
 
 #[OpenApi]
@@ -85,7 +99,7 @@ impl DanubitAuthApi {
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let user = users
             .filter(email.eq(post_data.0.email))
-            .select(models::User::as_select())
+            .select(models::database::User::as_select())
             .first(conn)
             .map_err(error::InternalServerError)?;
 
@@ -114,7 +128,7 @@ impl DanubitAuthApi {
 
         let chair_of = members::table
             .filter(members::user_id.eq(&user.id))
-            .filter(members::board_status.eq(models::BoardStatus::Chair))
+            .filter(members::board_status.eq(models::database::BoardStatus::Chair))
             .select(members::asociation)
             .load::<Uuid>(conn)
             .map_err(error::InternalServerError)?;
@@ -122,9 +136,9 @@ impl DanubitAuthApi {
         let board_of = members::table
             .filter(members::user_id.eq(&user.id))
             .filter(members::board_status.eq_any(vec![
-                models::BoardStatus::Board,
-                models::BoardStatus::ViceChair,
-                models::BoardStatus::Chair,
+                models::database::BoardStatus::Board,
+                models::database::BoardStatus::ViceChair,
+                models::database::BoardStatus::Chair,
             ]))
             .select(members::asociation)
             .load::<Uuid>(conn)
@@ -177,8 +191,8 @@ impl DanubitAuthApi {
             .hash_password(post_data.0.password.as_bytes(), &salt)
             .map_err(|e| argon_error_to_api_error(e, StatusCode::INTERNAL_SERVER_ERROR))?
             .to_string();
-
-        let user = models::NewUser {
+        println!("{hashed_password:?}");
+        let user = models::database::NaiveUser {
             username: post_data.0.username,
             name: post_data.0.name,
             surname: post_data.0.surname,
@@ -187,7 +201,7 @@ impl DanubitAuthApi {
             password_hash: Some(hashed_password),
             additional_info: post_data.0.additional_info,
         };
-
+        println!("{user:?}");
         diesel::insert_into(users)
             .values(user)
             .execute(conn)
@@ -202,7 +216,7 @@ impl DanubitAuthApi {
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
 
-        let user = models::NewUser {
+        let user = models::database::NaiveUser {
             username: post_data.0.username,
             name: post_data.0.name,
             surname: post_data.0.surname,
@@ -220,20 +234,11 @@ impl DanubitAuthApi {
         Ok(())
     }
 
-    #[oai(path = "/logout", method = "post")]
-    async fn logout(
-        &self,
-        data: Data<&ServerData>,
-        post_data: Json<Login>,
-    ) -> Result<PlainText<String>> {
-        todo!()
-    }
-
     #[oai(path = "/change_username", method = "post")]
     async fn change_username(
         &self,
         data: Data<&ServerData>,
-        post_data: Json<Login>,
+        post_data: Json<UsernameChange>,
     ) -> Result<PlainText<String>> {
         todo!()
     }
@@ -242,7 +247,7 @@ impl DanubitAuthApi {
     async fn change_password(
         &self,
         data: Data<&ServerData>,
-        post_data: Json<Login>,
+        post_data: Json<PasswordChange>,
     ) -> Result<PlainText<String>> {
         todo!()
     }
@@ -255,15 +260,15 @@ fn argon_error_to_api_error(argon_error: impl ToString, status_code: StatusCode)
 
 pub fn check_permissions(
     auth_scheme: &AuthScheme,
-    min_needed_permision: models::BoardStatus,
+    min_needed_permision: models::database::BoardStatus,
     asociation: &Uuid,
 ) -> Result<(), error::Error> {
-    if (min_needed_permision <= models::BoardStatus::False
+    if (min_needed_permision <= models::database::BoardStatus::False
         && auth_scheme.member_of.contains(asociation))
         || (auth_scheme.board_of.contains(asociation)
-            && min_needed_permision <= models::BoardStatus::Board)
+            && min_needed_permision <= models::database::BoardStatus::Board)
         || (auth_scheme.chair_of.contains(asociation)
-            && min_needed_permision <= models::BoardStatus::Chair)
+            && min_needed_permision <= models::database::BoardStatus::Chair)
     {
         return Ok(());
     };
@@ -295,16 +300,16 @@ pub fn check_if_admin(auth_scheme: &AuthScheme, settings: &Settings) -> Result<(
 
 pub fn check_permissions_in_any(
     auth_scheme: &AuthScheme,
-    min_needed_permision: models::BoardStatus,
+    min_needed_permision: models::database::BoardStatus,
     asociations: &Vec<Uuid>,
 ) -> Result<(), error::Error> {
     for uuid in asociations {
-        if (min_needed_permision <= models::BoardStatus::False
+        if (min_needed_permision <= models::database::BoardStatus::False
             && auth_scheme.member_of.contains(uuid))
             || (auth_scheme.board_of.contains(uuid)
-                && min_needed_permision <= models::BoardStatus::Board)
+                && min_needed_permision <= models::database::BoardStatus::Board)
             || (auth_scheme.chair_of.contains(uuid)
-                && min_needed_permision <= models::BoardStatus::Chair)
+                && min_needed_permision <= models::database::BoardStatus::Chair)
         {
             return Ok(());
         };

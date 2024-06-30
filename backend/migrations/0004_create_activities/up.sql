@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS activities (
   description             TEXT            NOT NULL,
   room                    VARCHAR(32)     NOT NULL,
   initial_date            TIMESTAMP       NOT NULL,
+  duration                INT             NOT NULL,
   is_multi_session        BOOLEAN         NOT NULL,
   is_creditable           BOOLEAN         NOT NULL,
   is_external             BOOLEAN         NOT NULL,

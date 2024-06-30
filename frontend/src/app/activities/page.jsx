@@ -1,8 +1,6 @@
 'use client'
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { shortNameToLogoPath } from '@/app/utils/normalization';
 import { get } from '@/app/utils/api'
 
 export default function Activities() {
@@ -14,6 +12,7 @@ export default function Activities() {
     useEffect(() => {
         if (activities.state == "loading") {
             get("api/publicActivities",
+                null,
                 (data) => {
                     setActivities({
                         state: "loaded",

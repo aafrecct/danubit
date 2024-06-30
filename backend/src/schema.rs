@@ -26,6 +26,7 @@ diesel::table! {
         #[max_length = 32]
         room -> Varchar,
         initial_date -> Timestamp,
+        duration -> Int4,
         is_multi_session -> Bool,
         is_creditable -> Bool,
         is_external -> Bool,

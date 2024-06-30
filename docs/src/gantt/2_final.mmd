@@ -1,0 +1,44 @@
+gantt
+  dateFormat YYYY-MM-DD
+  axisFormat %d-%b
+  tickInterval 2week
+  weekday monday
+
+  section Requisitos
+    World Café                            :done,    r1,   2023-09-11,     2w
+    Especificación de Requisitos          :done,    r2,   2023-09-18,     1w
+  
+  section Backend
+    Diseño Modelo de Datos Inicial        :done,    b1,   2023-09-18,     1w 
+    Diseño API Inicial                    :done,    b2,   after b1,       2w
+    Implementación API básica I           :done,    b3,   after b2,       6w
+
+    Implementación API básica II          :done,    b4,   2024-04-22,     6w
+    Implementación sistema usuarios       :done,    b5,   2024-05-13,     2w
+
+  section Pausa
+    Pausa                                 :         p5,   2023-12-04,      20w
+
+  section Frontend
+    Diseño prototipo usabilidad (1)       :done,    f1,   2023-09-25,     2w
+    Pruebas prototipo usabilidad (1)      :done,    f2,   after f1,       4w
+    Diseño prototipo usabilidad (2)       :done,    f3,   after f2,       2w
+    Pruebas prototipo usabilidad (2)      :done,    f4,   after f3,       2w
+    Creación de un pequeño design system  :done,    f5,   after f2,       1w
+
+    Implementación frontpage              :done,    f6,   2024-05-15,     1w
+    Implementación dashboard              :done,    f7,   after f6,       1w
+    Implementación activity manager       :done,    f8,   after f7,       1w
+    Implementación member manager         :done,    f9,   after f7,       1w
+
+
+  section Validación
+    Validación final                      :done,    v2,   after f9,       1w
+
+  section Documentación
+    Finalizar Documentación               :done,    d1,   after v2,       2w
+
+    
+
+
+    

@@ -1,16 +1,14 @@
 'use client'
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useSession } from '@/app/session';
 
 function UserHeader() {
   const session = useSession();
-  console.log(session, session.username)
   if (session && session.username) {
     return (
       <div>
-        <Link id="bar-accountbutton" href="/account" className="button">{session.username}</Link>
+        <Link id="bar-accountbutton" href="/dashboard" className="button">{session.username}</Link>
       </div>
     );
   }

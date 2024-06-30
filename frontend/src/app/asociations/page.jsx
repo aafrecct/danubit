@@ -16,6 +16,7 @@ export default function Asociations() {
     useEffect(() => {
         if (asociations.state == "loading") {
             get("api/asociations",
+                null,
                 (data) => {
                     setAsociations({
                         state: "loaded",

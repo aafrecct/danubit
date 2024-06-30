@@ -7,27 +7,21 @@ use diesel::{delete, update, BelongingToDsl, SelectableHelper};
 use jwt::VerifyWithKey;
 use poem::{error, web::Data, Request, Result};
 use poem_openapi::{
-    auth::ApiKey, param::Path, param::Query, payload::Json, OpenApi, SecurityScheme, Tags,
+    auth::Bearer, param::Path, param::Query, payload::Json, OpenApi, SecurityScheme, Tags,
 };
 use std::vec;
-use time::Duration;
 use uuid::Uuid;
 
 pub struct DanubitApi;
 
 #[derive(SecurityScheme)]
-#[oai(
-    ty = "api_key",
-    key_name = "X-API-Key",
-    key_in = "header",
-    checker = "auth_checker"
-)]
-pub struct ApiKeyAuth(auth::AuthScheme);
+#[oai(ty = "bearer", checker = "auth_checker")]
+pub struct JWTBearerAuth(auth::AuthScheme);
 
-async fn auth_checker(req: &Request, api_key: ApiKey) -> Option<auth::AuthScheme> {
+async fn auth_checker(req: &Request, bearer: Bearer) -> Option<auth::AuthScheme> {
     let server_data = req.data::<ServerData>().unwrap();
     let server_key = &server_data.settings.private_key;
-    VerifyWithKey::<auth::AuthScheme>::verify_with_key(api_key.key.as_str(), server_key).ok()
+    VerifyWithKey::<auth::AuthScheme>::verify_with_key(bearer.token.as_str(), server_key).ok()
 }
 
 #[derive(Tags)]
@@ -37,6 +31,7 @@ enum ApiTags {
     Activities,
     Materials,
     Documents,
+    Session,
 }
 
 #[OpenApi]
@@ -45,12 +40,12 @@ impl DanubitApi {
     async fn get_all_asociations(
         &self,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Asociation>>> {
+    ) -> Result<Json<Vec<models::database::Asociation>>> {
         use schema::asociations::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let result = asociations
-            .select(models::Asociation::as_select())
+            .select(models::database::Asociation::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -60,17 +55,17 @@ impl DanubitApi {
     #[oai(path = "/asociations", method = "post", tag = "ApiTags::Asociations")]
     async fn create_asociation(
         &self,
-        post_data: Json<models::NewAsociation>,
+        post_data: Json<models::database::NaiveAsociation>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Asociation>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Asociation>> {
         use schema::asociations::dsl::*;
         auth::check_if_admin(&auth.0, &data.0.settings)?;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let result = diesel::insert_into(asociations)
             .values(post_data.0)
-            .returning(models::Asociation::as_returning())
+            .returning(models::database::Asociation::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -86,14 +81,14 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<models::Asociation>> {
+    ) -> Result<Json<models::database::Asociation>> {
         use schema::asociations::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
         let result = asociations
             .filter(id.eq(uuid))
-            .select(models::Asociation::as_select())
+            .select(models::database::Asociation::as_select())
             .first(conn)
             .map_err(error::NotFound)?;
 
@@ -109,13 +104,13 @@ impl DanubitApi {
         &self,
         asociation_short_name: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<models::Asociation>> {
+    ) -> Result<Json<models::database::Asociation>> {
         use schema::asociations::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let result = asociations
             .filter(short_name.eq(asociation_short_name.0))
-            .select(models::Asociation::as_select())
+            .select(models::database::Asociation::as_select())
             .first(conn)
             .map_err(error::NotFound)?;
 
@@ -130,20 +125,20 @@ impl DanubitApi {
     async fn edit_asociation(
         &self,
         asociation_id: Path<String>,
-        update_data: Json<models::Asociation>,
+        update_data: Json<models::database::Asociation>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Asociation>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Asociation>> {
         use schema::asociations::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let result = update(asociations.filter(id.eq(uuid)))
             .set(update_data.0)
-            .returning(models::Asociation::as_returning())
+            .returning(models::database::Asociation::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -154,12 +149,12 @@ impl DanubitApi {
     async fn get_all_managers(
         &self,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Manager>>> {
+    ) -> Result<Json<Vec<models::database::Manager>>> {
         use schema::managers::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let result = managers
-            .select(models::Manager::as_select())
+            .select(models::database::Manager::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -175,27 +170,30 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<Vec<models::MemberResponse>>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::api::FullMember>>> {
         use schema::members::dsl::*;
         use schema::users;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let requests = members
             .filter(asociation.eq(uuid))
             .filter(is_accepted.eq(false))
             .inner_join(users::table)
-            .select((models::Member::as_select(), models::User::as_select()))
+            .select((
+                models::database::Member::as_select(),
+                models::database::User::as_select(),
+            ))
             .load(conn)
             .map_err(error::InternalServerError)?;
 
         let result = requests
             .into_iter()
-            .map(|(m, u)| models::MemberResponse {
+            .map(|(m, u)| models::api::FullMember {
                 id: m.id,
                 user: u,
                 asociation: m.asociation,
@@ -217,26 +215,34 @@ impl DanubitApi {
     )]
     async fn request_membership(
         &self,
-        _asociation_id: Path<String>,
-        post_data: Json<models::MembershipRequest>,
+        asociation_id: Path<Uuid>,
+        post_data: Json<models::api::MembershipRequest>,
         data: Data<&ServerData>,
-        _auth: ApiKeyAuth,
-    ) -> Result<Json<models::Member>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Member>> {
         use schema::members::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
-        let member = models::NewMember {
+
+        if auth.0.sub != post_data.0.user_id {
+            return Err(error::Error::from_string(
+                "Cannot request membership for another user.",
+                poem::http::StatusCode::BAD_REQUEST,
+            ));
+        }
+
+        let member = models::database::NaiveMember {
             user_id: post_data.0.user_id,
-            asociation: post_data.0.asociation,
+            asociation: asociation_id.0,
             is_accepted: false,
             accepted_date: None,
             expiry_date: None,
             label: None,
-            board_status: models::BoardStatus::False,
+            board_status: models::database::BoardStatus::False,
         };
         let result = diesel::insert_into(members)
             .values(member)
-            .returning(models::Member::as_returning())
+            .returning(models::database::Member::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -253,15 +259,19 @@ impl DanubitApi {
         asociation_id: Path<String>,
         member_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Member>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Member>> {
         use schema::members::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let user_uuid = Uuid::try_parse(&member_id.0).map_err(error::BadRequest)?;
         let asociation_uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &asociation_uuid)?;
+        auth::check_if_admin(&auth.0, &data.0.settings).or(auth::check_permissions(
+            &auth.0,
+            models::database::BoardStatus::Board,
+            &asociation_uuid,
+        ))?;
 
         let today = time::OffsetDateTime::now_utc().date();
         let result = update(
@@ -276,7 +286,7 @@ impl DanubitApi {
                 .replace_year(today.year() + 1)
                 .map_err(error::InternalServerError)?),
         ))
-        .returning(models::Member::as_returning())
+        .returning(models::database::Member::as_returning())
         .get_result(conn)
         .map_err(error::InternalServerError)?;
 
@@ -293,7 +303,7 @@ impl DanubitApi {
         asociation_id: Path<String>,
         member_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
+        auth: JWTBearerAuth,
     ) -> Result<()> {
         use schema::members::dsl::*;
 
@@ -301,7 +311,11 @@ impl DanubitApi {
         let user_uuid = Uuid::try_parse(&member_id.0).map_err(error::BadRequest)?;
         let asociation_uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &asociation_uuid)?;
+        auth::check_permissions(
+            &auth.0,
+            models::database::BoardStatus::Board,
+            &asociation_uuid,
+        )?;
 
         delete(
             members
@@ -323,27 +337,30 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<Vec<models::MemberResponse>>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::api::FullMember>>> {
         use schema::members::dsl::*;
         use schema::users;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let requests = members
             .filter(asociation.eq(uuid))
             .filter(is_accepted.eq(true))
             .inner_join(users::table)
-            .select((models::Member::as_select(), models::User::as_select()))
+            .select((
+                models::database::Member::as_select(),
+                models::database::User::as_select(),
+            ))
             .load(conn)
             .map_err(error::InternalServerError)?;
 
         let result = requests
             .into_iter()
-            .map(|(m, u)| models::MemberResponse {
+            .map(|(m, u)| models::api::FullMember {
                 id: m.id,
                 user: u,
                 asociation: m.asociation,
@@ -367,17 +384,21 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         member_id: Path<String>,
-        update_data: Json<models::Member>,
+        update_data: Json<models::database::Member>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Member>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Member>> {
         use schema::members::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let user_uuid = Uuid::try_parse(&member_id.0).map_err(error::BadRequest)?;
         let asociation_uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &asociation_uuid)?;
+        auth::check_permissions(
+            &auth.0,
+            models::database::BoardStatus::Board,
+            &asociation_uuid,
+        )?;
 
         let result = update(
             members
@@ -385,7 +406,7 @@ impl DanubitApi {
                 .filter(user_id.eq(user_uuid)),
         )
         .set(update_data.0)
-        .returning(models::Member::as_returning())
+        .returning(models::database::Member::as_returning())
         .get_result(conn)
         .map_err(error::InternalServerError)?;
 
@@ -402,7 +423,7 @@ impl DanubitApi {
         asociation_id: Path<String>,
         member_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
+        auth: JWTBearerAuth,
     ) -> Result<()> {
         use schema::members::dsl::*;
 
@@ -410,7 +431,11 @@ impl DanubitApi {
         let user_uuid = Uuid::try_parse(&member_id.0).map_err(error::BadRequest)?;
         let asociation_uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &asociation_uuid)?;
+        auth::check_permissions(
+            &auth.0,
+            models::database::BoardStatus::Board,
+            &asociation_uuid,
+        )?;
 
         delete(
             members
@@ -432,7 +457,7 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Member>>> {
+    ) -> Result<Json<Vec<models::database::Member>>> {
         use schema::members::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
@@ -442,11 +467,11 @@ impl DanubitApi {
             .filter(asociation.eq(uuid))
             .filter(is_accepted.eq(true))
             .filter(board_status.eq_any(vec![
-                models::BoardStatus::Board,
-                models::BoardStatus::ViceChair,
-                models::BoardStatus::Chair,
+                models::database::BoardStatus::Board,
+                models::database::BoardStatus::ViceChair,
+                models::database::BoardStatus::Chair,
             ]))
-            .select(models::Member::as_select())
+            .select(models::database::Member::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -462,10 +487,10 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         member_id: Path<String>,
-        update_data: Json<models::Member>,
+        update_data: Json<models::database::Member>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Member>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Member>> {
         use schema::members::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
@@ -474,7 +499,7 @@ impl DanubitApi {
 
         auth::check_if_admin(&auth.0, &data.0.settings).or(auth::check_permissions(
             &auth.0,
-            models::BoardStatus::Chair,
+            models::database::BoardStatus::Chair,
             &asociation_uuid,
         ))?;
 
@@ -484,7 +509,7 @@ impl DanubitApi {
                 .filter(user_id.eq(user_uuid)),
         )
         .set(update_data.0)
-        .returning(models::Member::as_returning())
+        .returning(models::database::Member::as_returning())
         .get_result(conn)
         .map_err(error::InternalServerError)?;
 
@@ -501,7 +526,7 @@ impl DanubitApi {
         asociation_id: Path<String>,
         member_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
+        auth: JWTBearerAuth,
     ) -> Result<()> {
         use schema::members::dsl::*;
 
@@ -511,7 +536,7 @@ impl DanubitApi {
 
         auth::check_if_admin(&auth.0, &data.0.settings).or(auth::check_permissions(
             &auth.0,
-            models::BoardStatus::Chair,
+            models::database::BoardStatus::Chair,
             &asociation_uuid,
         ))?;
 
@@ -520,8 +545,8 @@ impl DanubitApi {
                 .filter(asociation.eq(asociation_uuid))
                 .filter(user_id.eq(user_uuid)),
         )
-        .set(board_status.eq(models::BoardStatus::False))
-        .returning(models::Member::as_returning())
+        .set(board_status.eq(models::database::BoardStatus::False))
+        .returning(models::database::Member::as_returning())
         .get_result(conn)
         .map_err(error::InternalServerError)?;
 
@@ -537,7 +562,7 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Document>>> {
+    ) -> Result<Json<Vec<models::database::Document>>> {
         use schema::documents::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
@@ -545,7 +570,7 @@ impl DanubitApi {
         let result = documents
             .filter(asociation.eq(uuid))
             .filter(is_public_accessible.eq(true))
-            .select(models::Document::as_select())
+            .select(models::database::Document::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -561,18 +586,18 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<Vec<models::Document>>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::database::Document>>> {
         use schema::documents::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let result = documents
             .filter(asociation.eq(uuid))
-            .select(models::Document::as_select())
+            .select(models::database::Document::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -587,10 +612,10 @@ impl DanubitApi {
     async fn create_document(
         &self,
         asociation_id: Path<String>,
-        upload: models::DocumentUpload,
+        upload: models::api::DocumentUpload,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Document>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Document>> {
         todo!()
     }
 
@@ -603,10 +628,10 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         document_id: Path<String>,
-        update_data: Json<models::DocumentDescription>,
+        update_data: Json<models::api::DocumentDescription>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<Vec<models::Document>>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::database::Document>>> {
         todo!()
     }
 
@@ -619,14 +644,14 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Material>>> {
+    ) -> Result<Json<Vec<models::database::Material>>> {
         use schema::materials::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
         let result = materials
             .filter(asociation.eq(uuid))
-            .select(models::Material::as_select())
+            .select(models::database::Material::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -642,7 +667,7 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Material>>> {
+    ) -> Result<Json<Vec<models::database::Material>>> {
         use schema::materials::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
@@ -650,7 +675,7 @@ impl DanubitApi {
         let result = materials
             .filter(asociation.eq(uuid))
             .filter(is_lendable.eq(true))
-            .select(models::Material::as_select())
+            .select(models::database::Material::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -665,20 +690,20 @@ impl DanubitApi {
     async fn create_material(
         &self,
         asociation_id: Path<String>,
-        post_data: Json<models::NewMaterial>,
+        post_data: Json<models::database::NaiveMaterial>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Material>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Material>> {
         use schema::materials::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let result = diesel::insert_into(materials)
             .values(post_data.0)
-            .returning(models::Material::as_returning())
+            .returning(models::database::Material::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -694,21 +719,21 @@ impl DanubitApi {
         &self,
         asociation_id: Path<String>,
         material_id: Path<String>,
-        update_data: Json<models::Material>,
+        update_data: Json<models::database::Material>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Material>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Material>> {
         use schema::materials::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let material_id = &material_id.0.parse::<i64>().map_err(error::BadRequest)?;
         let result = update(materials.filter(id.eq(material_id)))
             .set(update_data.0)
-            .returning(models::Material::as_returning())
+            .returning(models::database::Material::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -725,14 +750,14 @@ impl DanubitApi {
         asociation_id: Path<String>,
         material_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
+        auth: JWTBearerAuth,
     ) -> Result<()> {
         use schema::materials::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let uuid = Uuid::try_parse(&asociation_id.0).map_err(error::BadRequest)?;
 
-        auth::check_permissions(&auth.0, models::BoardStatus::Board, &uuid)?;
+        auth::check_permissions(&auth.0, models::database::BoardStatus::Board, &uuid)?;
 
         let material_id = &material_id.0.parse::<i64>().map_err(error::BadRequest)?;
         delete(materials.filter(id.eq(material_id)))
@@ -751,7 +776,7 @@ impl DanubitApi {
         &self,
         asociation_filter: Query<Option<Uuid>>,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::FullActivity>>> {
+    ) -> Result<Json<Vec<models::api::FullActivity>>> {
         use schema::activities;
         use schema::asociations;
         use schema::organizers;
@@ -759,12 +784,12 @@ impl DanubitApi {
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let public_activities = activities::table
-            .filter(activities::access.eq(models::ActivityAccess::Public))
-            .select(models::Activity::as_select())
+            .filter(activities::access.eq(models::database::ActivityAccess::Public))
+            .select(models::database::Activity::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
-        let mut activity_organizers = models::Organizer::belonging_to(&public_activities)
+        let mut activity_organizers = models::database::Organizer::belonging_to(&public_activities)
             .inner_join(asociations::table)
             .inner_join(users::table)
             .into_boxed();
@@ -774,28 +799,32 @@ impl DanubitApi {
                 activity_organizers.filter(organizers::asociation.eq(asociation_filter.0.unwrap()));
         };
 
-        let activity_organizers: Vec<(models::Organizer, models::Asociation, models::User)> =
-            activity_organizers
-                .select((
-                    models::Organizer::as_select(),
-                    models::Asociation::as_select(),
-                    models::User::as_select(),
-                ))
-                .load(conn)
-                .map_err(error::InternalServerError)?;
+        let activity_organizers: Vec<(
+            models::database::Organizer,
+            models::database::Asociation,
+            models::database::User,
+        )> = activity_organizers
+            .select((
+                models::database::Organizer::as_select(),
+                models::database::Asociation::as_select(),
+                models::database::User::as_select(),
+            ))
+            .load(conn)
+            .map_err(error::InternalServerError)?;
 
-        let result: Vec<models::FullActivity> = activity_organizers
+        let result: Vec<models::api::FullActivity> = activity_organizers
             .grouped_by(&public_activities)
             .into_iter()
             .zip(public_activities)
             .map(|(org, act)| {
                 let (asocs, people) = org.into_iter().map(|(_, a, b)| (a, b)).unzip();
-                models::FullActivity {
+                models::api::FullActivity {
                     activity: act,
                     organizers: asocs,
                     people_in_charge: people,
                 }
             })
+            .filter(|a| !a.organizers.is_empty())
             .collect();
 
         Ok(Json(result))
@@ -810,8 +839,8 @@ impl DanubitApi {
         &self,
         asociation_filter: Query<Option<Uuid>>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<Vec<models::FullActivity>>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::api::FullActivity>>> {
         use schema::activities;
         use schema::asociations;
         use schema::organizers;
@@ -819,12 +848,12 @@ impl DanubitApi {
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let member_activities = activities::table
-            .filter(activities::access.eq(models::ActivityAccess::Members))
-            .select(models::Activity::as_select())
+            .filter(activities::access.eq(models::database::ActivityAccess::Members))
+            .select(models::database::Activity::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
-        let mut activity_organizers = models::Organizer::belonging_to(&member_activities)
+        let mut activity_organizers = models::database::Organizer::belonging_to(&member_activities)
             .inner_join(asociations::table)
             .inner_join(users::table)
             .filter(organizers::asociation.eq_any(auth.0.member_of))
@@ -835,23 +864,26 @@ impl DanubitApi {
                 activity_organizers.filter(organizers::asociation.eq(asociation_filter.0.unwrap()));
         };
 
-        let activity_organizers: Vec<(models::Organizer, models::Asociation, models::User)> =
-            activity_organizers
-                .select((
-                    models::Organizer::as_select(),
-                    models::Asociation::as_select(),
-                    models::User::as_select(),
-                ))
-                .load(conn)
-                .map_err(error::InternalServerError)?;
+        let activity_organizers: Vec<(
+            models::database::Organizer,
+            models::database::Asociation,
+            models::database::User,
+        )> = activity_organizers
+            .select((
+                models::database::Organizer::as_select(),
+                models::database::Asociation::as_select(),
+                models::database::User::as_select(),
+            ))
+            .load(conn)
+            .map_err(error::InternalServerError)?;
 
-        let result: Vec<models::FullActivity> = activity_organizers
+        let result: Vec<models::api::FullActivity> = activity_organizers
             .grouped_by(&member_activities)
             .into_iter()
             .zip(member_activities)
             .map(|(org, act)| {
                 let (asocs, people) = org.into_iter().map(|(_, a, b)| (a, b)).unzip();
-                models::FullActivity {
+                models::api::FullActivity {
                     activity: act,
                     organizers: asocs,
                     people_in_charge: people,
@@ -867,8 +899,8 @@ impl DanubitApi {
         &self,
         asociation_filter: Query<Option<Uuid>>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<Vec<models::FullActivity>>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::api::FullActivity>>> {
         use schema::activities;
         use schema::asociations;
         use schema::organizers;
@@ -876,12 +908,12 @@ impl DanubitApi {
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let board_activities = activities::table
-            .filter(activities::access.eq(models::ActivityAccess::Board))
-            .select(models::Activity::as_select())
+            .filter(activities::access.eq(models::database::ActivityAccess::Board))
+            .select(models::database::Activity::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
-        let mut activity_organizers = models::Organizer::belonging_to(&board_activities)
+        let mut activity_organizers = models::database::Organizer::belonging_to(&board_activities)
             .inner_join(asociations::table)
             .inner_join(users::table)
             .filter(organizers::asociation.eq_any(auth.0.board_of))
@@ -892,23 +924,26 @@ impl DanubitApi {
                 activity_organizers.filter(organizers::asociation.eq(asociation_filter.0.unwrap()));
         };
 
-        let activity_organizers: Vec<(models::Organizer, models::Asociation, models::User)> =
-            activity_organizers
-                .select((
-                    models::Organizer::as_select(),
-                    models::Asociation::as_select(),
-                    models::User::as_select(),
-                ))
-                .load(conn)
-                .map_err(error::InternalServerError)?;
+        let activity_organizers: Vec<(
+            models::database::Organizer,
+            models::database::Asociation,
+            models::database::User,
+        )> = activity_organizers
+            .select((
+                models::database::Organizer::as_select(),
+                models::database::Asociation::as_select(),
+                models::database::User::as_select(),
+            ))
+            .load(conn)
+            .map_err(error::InternalServerError)?;
 
-        let result: Vec<models::FullActivity> = activity_organizers
+        let result: Vec<models::api::FullActivity> = activity_organizers
             .grouped_by(&board_activities)
             .into_iter()
             .zip(board_activities)
             .map(|(org, act)| {
                 let (asocs, people) = org.into_iter().map(|(_, a, b)| (a, b)).unzip();
-                models::FullActivity {
+                models::api::FullActivity {
                     activity: act,
                     organizers: asocs,
                     people_in_charge: people,
@@ -922,10 +957,10 @@ impl DanubitApi {
     #[oai(path = "/activities", method = "post", tag = "ApiTags::Activities")]
     async fn create_activity(
         &self,
-        post_data: Json<models::NewFullActivity>,
+        post_data: Json<models::api::NewFullActivity>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Activity>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Activity>> {
         use schema::activities::dsl::*;
         use schema::organizers;
 
@@ -933,13 +968,13 @@ impl DanubitApi {
 
         auth::check_if_admin(&auth.0, &data.settings).or(auth::check_permissions_in_any(
             &auth.0,
-            models::BoardStatus::Board,
+            models::database::BoardStatus::Board,
             &post_data.0.organizers,
         ))?;
 
         let new_activity = diesel::insert_into(activities)
             .values(post_data.0.activity)
-            .returning(models::Activity::as_returning())
+            .returning(models::database::Activity::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -952,12 +987,12 @@ impl DanubitApi {
         diesel::insert_into(organizers::table)
             .values(
                 organizers
-                    .map(|(asoc, person)| models::NewOrganizer {
+                    .map(|(asoc, person)| models::database::NaiveOrganizer {
                         asociation: asoc,
                         activity: new_activity.id,
                         person_in_charge: person,
                     })
-                    .collect::<Vec<models::NewOrganizer>>(),
+                    .collect::<Vec<models::database::NaiveOrganizer>>(),
             )
             .execute(conn)
             .map_err(error::InternalServerError)?;
@@ -974,7 +1009,7 @@ impl DanubitApi {
         &self,
         activity_id: Path<i64>,
         data: Data<&ServerData>,
-    ) -> Result<Json<models::FullActivity>> {
+    ) -> Result<Json<models::api::FullActivity>> {
         use schema::activities;
         use schema::asociations;
         use schema::users;
@@ -982,17 +1017,17 @@ impl DanubitApi {
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let activity = activities::table
             .filter(activities::id.eq(activity_id.0))
-            .select(models::Activity::as_select())
+            .select(models::database::Activity::as_select())
             .first(conn)
             .map_err(error::InternalServerError)?;
 
-        let (asocs, people) = models::Organizer::belonging_to(&activity)
+        let (asocs, people) = models::database::Organizer::belonging_to(&activity)
             .inner_join(asociations::table)
             .inner_join(users::table)
             .select((
-                models::Organizer::as_select(),
-                models::Asociation::as_select(),
-                models::User::as_select(),
+                models::database::Organizer::as_select(),
+                models::database::Asociation::as_select(),
+                models::database::User::as_select(),
             ))
             .load(conn)
             .map_err(error::InternalServerError)?
@@ -1000,7 +1035,7 @@ impl DanubitApi {
             .map(|(_, a, b)| (a, b))
             .unzip();
 
-        let result = models::FullActivity {
+        let result = models::api::FullActivity {
             activity,
             organizers: asocs,
             people_in_charge: people,
@@ -1017,10 +1052,10 @@ impl DanubitApi {
     async fn put_activity(
         &self,
         activity_id: Path<i64>,
-        update_data: Json<models::NewFullActivity>,
+        update_data: Json<models::api::NewFullActivity>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Activity>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Activity>> {
         todo!()
     }
 
@@ -1033,13 +1068,17 @@ impl DanubitApi {
         &self,
         activity_id: Path<i64>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
+        auth: JWTBearerAuth,
     ) -> Result<()> {
         use schema::activities::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
 
-        auth::check_permissions_in_any(&auth.0, models::BoardStatus::Board, &auth.0.board_of)?;
+        auth::check_permissions_in_any(
+            &auth.0,
+            models::database::BoardStatus::Board,
+            &auth.0.board_of,
+        )?;
 
         delete(activities.filter(id.eq(&activity_id.0)))
             .execute(conn)
@@ -1056,10 +1095,10 @@ impl DanubitApi {
     async fn add_activity_media(
         &self,
         asociation_id: Path<String>,
-        upload: models::MediaUpload,
+        upload: models::api::MediaUpload,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Activity>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Activity>> {
         todo!()
     }
 
@@ -1073,8 +1112,8 @@ impl DanubitApi {
         asociation_id: Path<String>,
         media_id: Path<String>,
         data: Data<&ServerData>,
-        auth: ApiKeyAuth,
-    ) -> Result<Json<models::Activity>> {
+        auth: JWTBearerAuth,
+    ) -> Result<Json<models::database::Activity>> {
         todo!()
     }
 
@@ -1087,13 +1126,13 @@ impl DanubitApi {
         &self,
         activity_id: Path<i64>,
         data: Data<&ServerData>,
-    ) -> Result<Json<Vec<models::Registration>>> {
+    ) -> Result<Json<Vec<models::database::Registration>>> {
         use schema::registration::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
         let result = registration
             .filter(activity.eq(&activity_id.0))
-            .select(models::Registration::as_select())
+            .select(models::database::Registration::as_select())
             .load(conn)
             .map_err(error::InternalServerError)?;
 
@@ -1107,16 +1146,16 @@ impl DanubitApi {
     async fn register_for_activity(
         &self,
         activity_id: Path<i64>,
-        post_data: Json<models::NewRegistration>,
+        post_data: Json<models::database::Registration>,
         data: Data<&ServerData>,
-    ) -> Result<Json<models::Registration>> {
+    ) -> Result<Json<models::database::Registration>> {
         use schema::registration::dsl::*;
 
         let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
 
         let result = diesel::insert_into(registration)
             .values(post_data.0)
-            .returning(models::Registration::as_returning())
+            .returning(models::database::Registration::as_returning())
             .get_result(conn)
             .map_err(error::InternalServerError)?;
 
@@ -1132,7 +1171,43 @@ impl DanubitApi {
         &self,
         activity_id: Path<String>,
         data: Data<&ServerData>,
-    ) -> Result<Json<models::Activity>> {
+    ) -> Result<Json<models::database::Activity>> {
         todo!()
+    }
+
+    #[oai(path = "/session/board_of", method = "get", tag = "ApiTags::Session")]
+    async fn get_session_asociations_board(
+        &self,
+        data: Data<&ServerData>,
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::database::Asociation>>> {
+        use schema::asociations::dsl::*;
+
+        let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
+        let result = asociations
+            .filter(id.eq_any(auth.0.board_of))
+            .select(models::database::Asociation::as_select())
+            .load(conn)
+            .map_err(error::InternalServerError)?;
+
+        Ok(Json(result))
+    }
+
+    #[oai(path = "/session/member_of", method = "get", tag = "ApiTags::Session")]
+    async fn get_session_asociations_member(
+        &self,
+        data: Data<&ServerData>,
+        auth: JWTBearerAuth,
+    ) -> Result<Json<Vec<models::database::Asociation>>> {
+        use schema::asociations::dsl::*;
+
+        let conn = &mut data.data_pool.get().map_err(error::InternalServerError)?;
+        let result = asociations
+            .filter(id.eq_any(auth.0.member_of))
+            .select(models::database::Asociation::as_select())
+            .load(conn)
+            .map_err(error::InternalServerError)?;
+
+        Ok(Json(result))
     }
 }

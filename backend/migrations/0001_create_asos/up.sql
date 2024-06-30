@@ -3,7 +3,7 @@ CREATE DOMAIN email AS VARCHAR
 
 CREATE TABLE IF NOT EXISTS asociations (
   id                    UUID            DEFAULT gen_random_uuid()   PRIMARY KEY,
-  short_name            VARCHAR(24)     UNIQUE NOT NULL,
+  short_name            VARCHAR(24)     NOT NULL,
   long_name             VARCHAR(128)    UNIQUE NOT NULL,
   email                 EMAIL           UNIQUE NOT NULL,
   description           TEXT            NOT NULL,

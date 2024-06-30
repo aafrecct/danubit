@@ -1,21 +1,7 @@
 erDiagram
-  
-  USER ||--|{ MEMBER              : is
-  USER ||--|| MANAGER             : is
-  USER ||--|| LENT                : has
-  USER {
-    uuid      id                  PK
-    string    username            UK
-    string    name        
-    string    surname
-    string    email               UK
-    bool      activated
-    password  password_hash
-    json      additional_info
-  }
 
-  ASOCIATION }|--|{ MEMBER        : has
-  ASOCIATION }|--|| MANAGER       : has
+  USER ||--|| LENT                : has
+
   ASOCIATION ||--|{ DOCUMENT      : keeps
   ASOCIATION }|--o{ ACTIVITY      : organizes
   ASOCIATION ||--|{ MATERIAL      : owns
@@ -28,17 +14,7 @@ erDiagram
     bool    is_public_joinable
     json    info
   }
-  
-  MEMBER {
-    int  id
-    uuid user_id
-    uuid asociation       
-    bool is_accepted
-    date accepted_date
-    date expiry_date
-    string label
-    enum isBoardMember            "false | board | vicechair | chair"
-  }
+
   
   ACTIVITY ||--o{ MEDIA           : uses  
   ACTIVITY ||--o{ DOCUMENT        : links
@@ -90,13 +66,4 @@ erDiagram
     string  name
     string  kind
     string  path
-  }
-
-  MANAGER {
-    string  name                  PK
-    email   contactEmail
-    email   adminEmail
-    email   materialEmail
-    email   printEmail
-    email   commEmail
   }

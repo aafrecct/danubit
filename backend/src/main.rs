@@ -1,7 +1,6 @@
 pub mod api;
 pub mod auth;
 pub mod models;
-pub mod repo;
 pub mod schema;
 pub mod settings;
 
@@ -20,8 +19,10 @@ use poem_openapi::OpenApiService;
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
+    let package_version = env::var("CARGO_PKG_VERSION").unwrap_or("dev".to_string());
     let settings = settings::load_settings();
     let server_data = settings::get_server_data(settings);
+
 
     tracing_subscriber::fmt::init();
 
@@ -30,20 +31,23 @@ async fn main() -> Result<(), std::io::Error> {
         "http://{}:{}",
         &server_data.settings.hostname, &server_data.settings.port
     );
-    let api_service = OpenApiService::new(api::DanubitApi, "Danubit", "0.0.1").server(&url);
-    let auth_service =
-        OpenApiService::new(auth::DanubitAuthApi, "Danubit Auth", "0.0.1").server(&url);
+    let api_service = OpenApiService::new(api::DanubitApi, "Danubit", &package_version)
+        .server(format!("{}/{}", &url, "api"));
+    let auth_service = OpenApiService::new(auth::DanubitAuthApi, "Danubit Auth", &package_version)
+        .server(format!("{}/{}", &url, "auth"));
 
     let docs = api_service.swagger_ui();
     let spec = api_service.spec();
     let auth_docs = auth_service.swagger_ui();
+    let auth_spec = auth_service.spec();
 
     let route = Route::new()
         .nest("/api", api_service)
         .nest("/auth", auth_service)
         .nest("/docs", docs)
         .nest("/docs/auth", auth_docs)
-        .at("/spec", poem::endpoint::make_sync(move |_| spec.clone()))
+        .at("/docs/spec", poem::endpoint::make_sync(move |_| spec.clone()))
+        .at("/docs/auth/spec", poem::endpoint::make_sync(move |_| auth_spec.clone()))
         .with(Cors::new())
         .data(server_data);
 
@@ -64,7 +68,7 @@ fn create_admin_user(
         .map_err(|x| x.to_string())?
         .to_string();
 
-    let user = models::NewUser {
+    let user = models::database::NaiveUser {
         username: settings.admin_username.clone(),
         name: "".to_string(),
         surname: "".to_string(),

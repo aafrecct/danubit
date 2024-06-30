@@ -202,6 +202,7 @@ def loginAsAdmin():
         print(login_response)
         return
 
+    print(login_response)
     return login_response.json()
 
 
@@ -212,7 +213,7 @@ def createBaseAsociations():
         response = post(
             f"{SERVICE_BASE_URL}/api/asociations",
             json=asociation,
-            headers={"X-API-Key": user["token"]},
+            headers={"Authorization": f"Bearer {user["token"]}"},
         )
         if response.ok:
             asociations[key] = response.json()
@@ -236,7 +237,7 @@ def createBaseActivities():
                 "organizers": [asociations[a]["id"] for a in activity["asociations"]],
                 "activity": activity["activity"],
             },
-            headers={"X-API-Key": user["token"]},
+            headers={"Authorization": f"Bearer {user["token"]}"},
         )
         if response.ok:
             activities.append(response.json())
@@ -245,6 +246,40 @@ def createBaseActivities():
             print("======")
 
     return activities
+
+
+def addAdminToAsosBoards():
+    user = loginAsAdmin()
+    asociations = {
+        a["id"]: a for a in get(f"{SERVICE_BASE_URL}/api/asociations").json()
+    }
+    members = []
+
+    for asociation in asociations:
+        print(f"{SERVICE_BASE_URL}/api/asociations/{asociation}/membershipRequests")
+        post(
+            f"{SERVICE_BASE_URL}/api/asociations/{asociation}/membershipRequests",
+            json={
+                "user_id": user["id"],
+                "asociation": asociation,
+            },
+            headers={"Authorization": f"Bearer {user["token"]}"},
+        ).ok
+        member = put(
+            f"{SERVICE_BASE_URL}/api/asociations/{asociation}/membershipRequests/{user["id"]}",
+            headers={"X-API-Key": user["token"]},
+        ).json()
+
+        member["board_status"] = "Chair"
+        response = put(
+            f"{SERVICE_BASE_URL}/api/asociations/{asociation}/board/{user["id"]}",
+            json=member,
+            headers={"Authorization": f"Bearer {user["token"]}"},
+        )
+        if response.ok:
+            members.append(response.json())
+
+    return members
 
 
 if __name__ == "__main__":

@@ -47,17 +47,17 @@ export default function Page({ params }) {
     return (
         <main id="asociation-backdrop">
             {data.state == "loaded" && (
-                <div id="asociation-backdrop">
+                <div id="asociation">
                     <div id="asociation-logo">
                         <img src={shortNameToLogoPath(data.asociation.short_name)} alt="No Media" />
-                        <JoinButton></JoinButton>
+                        <JoinButton asociation={data.asociation.id}></JoinButton>
                     </div>
                     <div id="asociation-info">
                         <span id="asociation-name">{data.asociation.short_name}</span>
                         <span id="asociation-lname">{data.asociation.long_name}</span>
                         <span id="asociation-desc">{data.asociation.description}</span>
                         <span id="asociation-link">Links</span>
-                        {Object.keys(data.asociation.info.links).map((linkName) => (
+                        {Object.keys(data.asociation.info.links || []).map((linkName) => (
                             <div key={linkName}>
                                 <span className="asociation-link-name">{linkName}: </span>
                                 <span className="asociation-link">{data.asociation.info.links[linkName]}</span>
@@ -70,26 +70,46 @@ export default function Page({ params }) {
     )
 }
 
-function JoinButton() {
+function JoinButton({ asociation }) {
     const session = useSession();
+    const joinUrl = `http://${process.env.apiHost}/api/asociations/${asociation}/membershipRequests`;
+    const [joined, setJoined] = useState(false);
+
 
     function handleClick() {
-        fetch(authUrl, {
+        fetch(joinUrl, {
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-API-Key': session.token
             },
             method: "POST",
-            body: JSON.stringify(loginInfo)
-          })
-            .then((response) => {
-              if (!response.ok) {
-                console.log("Wrong login info")
-              }
-              return response.json()
+            body: JSON.stringify({
+                user_id: session.id,
+                asociation: asociation
             })
-            .then((_) => {
-              home()
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    console.log(response);
+                }
+                setJoined(true);
             })
     }
- }
+
+    if (!session.username) {
+        return (
+            <span className="button">Logeate para apuntarte</span>
+        )
+    }
+
+    if (joined) {
+        return <span className="button">Esperando aprovación</span>
+    }
+
+    return (
+        <button onClick={handleClick}>
+            Apúntate
+        </button>
+    )
+}
